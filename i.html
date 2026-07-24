@@ -132,144 +132,119 @@
         </aside>
 
         <!-- メインコンテンツ -->
-        <main class="flex-1 p-6 sm:p-8 md:p-10 max-w-[1600px] w-full mx-auto overflow-x-hidden">
+        <main class="flex-1 p-6 sm:p-8 md:p-10 max-w-7xl w-full overflow-x-hidden">
             
             <!-- 顧客管理 -->
-            <section id="tab-customers" class="tab-content block space-y-6">
-                <div class="border-b border-zinc-800/80 pb-4">
-                    <h3 class="text-2xl font-bold tracking-wider text-zinc-100">顧客管理</h3>
+            <section id="tab-customers" class="tab-content block">
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold tracking-wider text-zinc-100">顧客管理</h3>
                     <p class="text-xs text-zinc-500 mt-1">取引先企業の基本情報を登録・統合管理します。</p>
                 </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- 左カラム: フォーム -->
-                    <div class="lg:col-span-4 bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
-                        <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-5 flex items-center gap-2 pb-3 border-b border-zinc-800/60">
-                            <i data-lucide="plus-circle" class="w-4 h-4 text-zinc-400"></i>新規顧客登録
-                        </h4>
-                        <form id="customer-form" onsubmit="saveCustomer(event)" class="space-y-4">
-                            <div>
-                                <label class="block text-xs text-zinc-400 mb-1.5 font-medium">企業名・サイト名 <span class="text-rose-500">*</span></label>
-                                <input type="text" id="cust-name" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
-                            </div>
-                            <div>
-                                <label class="block text-xs text-zinc-400 mb-1.5 font-medium">担当者名</label>
-                                <input type="text" id="cust-pic" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
-                            </div>
-                            <div>
-                                <label class="block text-xs text-zinc-400 mb-1.5 font-medium">メールアドレス</label>
-                                <input type="email" id="cust-email" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
-                            </div>
-                            <div>
-                                <label class="block text-xs text-zinc-400 mb-1.5 font-medium">所在地</label>
-                                <input type="text" id="cust-address" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
-                            </div>
-                            <button type="submit" class="w-full py-3 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer rounded-xl shadow-md mt-2">
-                                顧客を登録する
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- 右カラム: 一覧テーブル -->
-                    <div class="lg:col-span-8 bg-zinc-900 border border-zinc-800/80 rounded-2xl overflow-hidden shadow-xl">
-                        <div class="p-4 border-b border-zinc-800/80 bg-zinc-950/40 flex items-center justify-between">
-                            <span class="text-xs font-bold text-zinc-400 tracking-wider uppercase">登録済み顧客一覧</span>
+                <div class="bg-zinc-900 border border-zinc-800 p-6 mb-8 rounded-2xl shadow-lg">
+                    <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-4 flex items-center gap-2"><i data-lucide="plus-circle" class="w-4 h-4"></i>新規顧客登録</h4>
+                    <form id="customer-form" onsubmit="saveCustomer(event)" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs text-zinc-400 mb-1">企業名・サイト名 <span class="text-zinc-500">*</span></label>
+                            <input type="text" id="cust-name" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                         </div>
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full text-left border-collapse">
-                                <thead>
-                                    <tr class="bg-zinc-950/80 border-b border-zinc-800 text-[11px] font-bold text-zinc-400 uppercase tracking-widest">
-                                        <th class="p-4 whitespace-nowrap">企業名・屋号</th>
-                                        <th class="p-4 whitespace-nowrap">担当者</th>
-                                        <th class="p-4 whitespace-nowrap">メールアドレス</th>
-                                        <th class="p-4 whitespace-nowrap">所在地</th>
-                                        <th class="p-4 text-center w-20 whitespace-nowrap">操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="customer-list-tbody" class="text-xs divide-y divide-zinc-800/60 text-zinc-300"></tbody>
-                            </table>
+                        <div>
+                            <label class="block text-xs text-zinc-400 mb-1">担当者名</label>
+                            <input type="text" id="cust-pic" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                         </div>
+                        <div>
+                            <label class="block text-xs text-zinc-400 mb-1">メールアドレス</label>
+                            <input type="email" id="cust-email" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
+                        </div>
+                        <div class="md:col-span-3">
+                            <label class="block text-xs text-zinc-400 mb-1">所在地</label>
+                            <input type="text" id="cust-address" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
+                        </div>
+                        <div class="md:col-span-3 text-right">
+                            <button type="submit" class="px-6 py-2.5 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer w-full md:w-auto rounded-xl">顧客を登録する</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-lg">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-zinc-950 border-b border-zinc-800 text-[11px] font-bold text-zinc-400 uppercase tracking-widest">
+                                    <th class="p-4 whitespace-nowrap">企業名・屋号</th>
+                                    <th class="p-4 whitespace-nowrap">担当者</th>
+                                    <th class="p-4 whitespace-nowrap">メールアドレス</th>
+                                    <th class="p-4 whitespace-nowrap">所在地</th>
+                                    <th class="p-4 text-center w-20 whitespace-nowrap">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="customer-list-tbody" class="text-xs divide-y divide-zinc-800/60 text-zinc-300"></tbody>
+                        </table>
                     </div>
                 </div>
             </section>
 
             <!-- サイト一覧・登録 -->
-            <section id="tab-sites" class="tab-content hidden space-y-6">
-                <div class="border-b border-zinc-800/80 pb-4">
-                    <h3 class="text-2xl font-bold tracking-wider text-zinc-100">サイト一覧・登録</h3>
+            <section id="tab-sites" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold tracking-wider text-zinc-100">サイト一覧・登録</h3>
                     <p class="text-xs text-zinc-500 mt-1">運用サイトのURLや契約状態を一覧化します。</p>
                 </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- 左カラム: フォーム -->
-                    <div class="lg:col-span-4 bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
-                        <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-5 flex items-center gap-2 pb-3 border-b border-zinc-800/60">
-                            <i data-lucide="plus-circle" class="w-4 h-4 text-zinc-400"></i>新規サイト登録
-                        </h4>
-                        <form id="site-form" onsubmit="saveSite(event)" class="space-y-4">
-                            <div>
-                                <label class="block text-xs text-zinc-400 mb-1.5 font-medium">サイト名・メディア名 <span class="text-rose-500">*</span></label>
-                                <input type="text" id="site-name" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
-                            </div>
-                            <div>
-                                <label class="block text-xs text-zinc-400 mb-1.5 font-medium">URL <span class="text-rose-500">*</span></label>
-                                <input type="url" id="site-url" required placeholder="https://" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
-                            </div>
-                            <div>
-                                <label class="block text-xs text-zinc-400 mb-1.5 font-medium">紐付ける顧客（任意）</label>
-                                <select id="site-customer-select" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition"></select>
-                            </div>
-                            <button type="submit" class="w-full py-3 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer rounded-xl shadow-md mt-2">
-                                サイトを登録する
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- 右カラム: 一覧テーブル -->
-                    <div class="lg:col-span-8 bg-zinc-900 border border-zinc-800/80 rounded-2xl overflow-hidden shadow-xl">
-                        <div class="p-4 border-b border-zinc-800/80 bg-zinc-950/40 flex items-center justify-between">
-                            <span class="text-xs font-bold text-zinc-400 tracking-wider uppercase">登録済みサイト一覧</span>
+                <div class="bg-zinc-900 border border-zinc-800 p-6 mb-8 rounded-2xl shadow-lg">
+                    <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-4 flex items-center gap-2"><i data-lucide="plus-circle" class="w-4 h-4"></i>新規サイト登録</h4>
+                    <form id="site-form" onsubmit="saveSite(event)" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs text-zinc-400 mb-1">サイト名・メディア名 <span class="text-zinc-500">*</span></label>
+                            <input type="text" id="site-name" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                         </div>
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full text-left border-collapse">
-                                <thead>
-                                    <tr class="bg-zinc-950/80 border-b border-zinc-800 text-[11px] font-bold text-zinc-400 uppercase tracking-widest">
-                                        <th class="p-4 whitespace-nowrap">サイト名</th>
-                                        <th class="p-4 whitespace-nowrap">URL</th>
-                                        <th class="p-4 whitespace-nowrap">所有顧客</th>
-                                        <th class="p-4 text-center w-20 whitespace-nowrap">操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="site-list-tbody" class="text-xs divide-y divide-zinc-800/60 text-zinc-300"></tbody>
-                            </table>
+                        <div>
+                            <label class="block text-xs text-zinc-400 mb-1">URL <span class="text-zinc-500">*</span></label>
+                            <input type="url" id="site-url" required placeholder="https://" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                         </div>
+                        <div>
+                            <label class="block text-xs text-zinc-400 mb-1">紐付ける顧客（任意）</label>
+                            <select id="site-customer-select" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl"></select>
+                        </div>
+                        <div class="md:col-span-3 text-right">
+                            <button type="submit" class="px-6 py-2.5 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer w-full md:w-auto rounded-xl">サイトを登録する</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-lg">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-zinc-950 border-b border-zinc-800 text-[11px] font-bold text-zinc-400 uppercase tracking-widest">
+                                    <th class="p-4 whitespace-nowrap">サイト名</th>
+                                    <th class="p-4 whitespace-nowrap">URL</th>
+                                    <th class="p-4 whitespace-nowrap">所有顧客</th>
+                                    <th class="p-4 text-center w-20 whitespace-nowrap">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="site-list-tbody" class="text-xs divide-y divide-zinc-800/60 text-zinc-300"></tbody>
+                        </table>
                     </div>
                 </div>
             </section>
 
             <!-- 案件管理 -->
-            <section id="tab-projects" class="tab-content hidden space-y-6">
-                <div class="border-b border-zinc-800/80 pb-4">
-                    <h3 class="text-2xl font-bold tracking-wider text-zinc-100">案件管理</h3>
+            <section id="tab-projects" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold tracking-wider text-zinc-100">案件管理</h3>
                     <p class="text-xs text-zinc-500 mt-1">案件の進捗や原価、サービス分類、入金状態を管理します。</p>
                 </div>
-
-                <div class="bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
-                    <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-5 flex items-center gap-2 pb-3 border-b border-zinc-800/60">
-                        <i data-lucide="plus-circle" class="w-4 h-4 text-zinc-400"></i>新規案件情報入力
-                    </h4>
-                    <form id="project-form" onsubmit="saveProject(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="bg-zinc-900 border border-zinc-800 p-6 mb-8 rounded-2xl shadow-lg">
+                    <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-4 flex items-center gap-2"><i data-lucide="plus-circle" class="w-4 h-4"></i>新規案件情報入力</h4>
+                    <form id="project-form" onsubmit="saveProject(event)" class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">対象顧客 <span class="text-rose-500">*</span></label>
-                            <select id="proj-customer-select" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition"></select>
+                            <label class="block text-xs text-zinc-400 mb-1">対象顧客 <span class="text-zinc-500">*</span></label>
+                            <select id="proj-customer-select" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl"></select>
                         </div>
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">案件名 <span class="text-rose-500">*</span></label>
-                            <input type="text" id="proj-name" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                            <label class="block text-xs text-zinc-400 mb-1">案件名 <span class="text-zinc-500">*</span></label>
+                            <input type="text" id="proj-name" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                         </div>
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">サービス区分 <span class="text-rose-500">*</span></label>
-                            <select id="proj-service" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                            <label class="block text-xs text-zinc-400 mb-1">サービス区分 <span class="text-zinc-500">*</span></label>
+                            <select id="proj-service" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                                 <option value="Web制作">Web制作</option>
                                 <option value="システム開発">システム開発</option>
                                 <option value="マーケティング・SEO">マーケティング・SEO</option>
@@ -278,24 +253,24 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">契約金額（税抜） <span class="text-rose-500">*</span></label>
-                            <input type="number" id="proj-amount" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="500000">
+                            <label class="block text-xs text-zinc-400 mb-1">契約金額（税抜） <span class="text-zinc-500">*</span></label>
+                            <input type="number" id="proj-amount" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl" placeholder="500000">
                         </div>
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">原価・外注費（税抜）</label>
-                            <input type="number" id="proj-cost" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="150000">
+                            <label class="block text-xs text-zinc-400 mb-1">原価・外注費（税抜）</label>
+                            <input type="number" id="proj-cost" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl" placeholder="150000">
                         </div>
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">契約日 <span class="text-rose-500">*</span></label>
-                            <input type="date" id="proj-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                            <label class="block text-xs text-zinc-400 mb-1">契約日 <span class="text-zinc-500">*</span></label>
+                            <input type="date" id="proj-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                         </div>
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">完了日（制作日数計算用）</label>
-                            <input type="date" id="proj-end-date" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                            <label class="block text-xs text-zinc-400 mb-1">完了日（制作日数計算用）</label>
+                            <input type="date" id="proj-end-date" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                         </div>
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">ステータス</label>
-                            <select id="proj-status" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                            <label class="block text-xs text-zinc-400 mb-1">ステータス</label>
+                            <select id="proj-status" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                                 <option value="進行中">進行中</option>
                                 <option value="完了">完了</option>
                                 <option value="失注">失注</option>
@@ -303,26 +278,22 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">入金状況</label>
-                            <select id="proj-payment" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                            <label class="block text-xs text-zinc-400 mb-1">入金状況</label>
+                            <select id="proj-payment" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                                 <option value="入金済">入金済</option>
                                 <option value="未入金">未入金</option>
                             </select>
                         </div>
-                        <div class="sm:col-span-2 lg:col-span-3 text-right pt-2">
-                            <button type="submit" class="px-8 py-3 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer w-full sm:w-auto rounded-xl shadow-md">案件を登録する</button>
+                        <div class="md:col-span-3 text-right">
+                            <button type="submit" class="px-6 py-2.5 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer w-full md:w-auto rounded-xl">案件を登録する</button>
                         </div>
                     </form>
                 </div>
-
-                <div class="bg-zinc-900 border border-zinc-800/80 rounded-2xl overflow-hidden shadow-xl">
-                    <div class="p-4 border-b border-zinc-800/80 bg-zinc-950/40 flex items-center justify-between">
-                        <span class="text-xs font-bold text-zinc-400 tracking-wider uppercase">案件一覧</span>
-                    </div>
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-lg">
                     <div class="overflow-x-auto">
                         <table class="min-w-full text-left border-collapse">
                             <thead>
-                                <tr class="bg-zinc-950/80 border-b border-zinc-800 text-[11px] font-bold text-zinc-400 uppercase tracking-widest">
+                                <tr class="bg-zinc-950 border-b border-zinc-800 text-[11px] font-bold text-zinc-400 uppercase tracking-widest">
                                     <th class="p-4 whitespace-nowrap">顧客名</th>
                                     <th class="p-4 whitespace-nowrap">案件名</th>
                                     <th class="p-4 whitespace-nowrap">サービス</th>
@@ -340,86 +311,73 @@
             </section>
 
             <!-- タスク管理 -->
-            <section id="tab-tasks" class="tab-content hidden space-y-6">
-                <div class="border-b border-zinc-800/80 pb-4">
-                    <h3 class="text-2xl font-bold tracking-wider text-zinc-100">タスク管理</h3>
+            <section id="tab-tasks" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold tracking-wider text-zinc-100">タスク管理</h3>
                     <p class="text-xs text-zinc-500 mt-1">受注タスクの納期や個別ToDoの処理・記録を行います。</p>
                 </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- 左カラム: フォーム -->
-                    <div class="lg:col-span-5 bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
-                        <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-5 flex items-center gap-2 pb-3 border-b border-zinc-800/60">
-                            <i data-lucide="plus-circle" class="w-4 h-4 text-zinc-400"></i>新規タスク追加
-                        </h4>
-                        <form id="task-form" onsubmit="saveTask(event)" class="space-y-4">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">受注日 <span class="text-rose-500">*</span></label>
-                                    <input type="date" id="task-order-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
-                                </div>
-                                <div>
-                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">期限（デッドライン） <span class="text-rose-500">*</span></label>
-                                    <input type="date" id="task-due-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-xs text-zinc-400 mb-1.5 font-medium">金額（半角数字）</label>
-                                <input type="number" id="task-amount" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="50000">
-                            </div>
-                            <div>
-                                <label class="block text-xs text-zinc-400 mb-1.5 font-medium">タスク内容・詳細 <span class="text-rose-500">*</span></label>
-                                <textarea id="task-content" required rows="4" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="依頼内容や作業詳細を入力してください"></textarea>
-                            </div>
-                            <button type="submit" class="w-full py-3 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer rounded-xl shadow-md mt-2">
-                                タスクを登録する
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- 右カラム: 一覧テーブル -->
-                    <div class="lg:col-span-7 bg-zinc-900 border border-zinc-800/80 rounded-2xl overflow-hidden shadow-xl">
-                        <div class="p-4 border-b border-zinc-800/80 bg-zinc-950/40 flex items-center justify-between">
-                            <span class="text-xs font-bold text-zinc-400 tracking-wider uppercase">タスク一覧</span>
+                <div class="bg-zinc-900 border border-zinc-800 p-6 mb-8 rounded-2xl shadow-lg">
+                    <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-4 flex items-center gap-2"><i data-lucide="plus-circle" class="w-4 h-4"></i>新規タスク追加</h4>
+                    <form id="task-form" onsubmit="saveTask(event)" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs text-zinc-400 mb-1">受注日 <span class="text-zinc-500">*</span></label>
+                            <input type="date" id="task-order-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                         </div>
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full text-left border-collapse">
-                                <thead>
-                                    <tr class="bg-zinc-950/80 border-b border-zinc-800 text-[11px] font-bold text-zinc-400 uppercase tracking-widest">
-                                        <th class="p-4 w-28 whitespace-nowrap">受注日</th>
-                                        <th class="p-4 w-28 whitespace-nowrap">期限</th>
-                                        <th class="p-4 w-32 whitespace-nowrap">金額</th>
-                                        <th class="p-4 whitespace-nowrap">内容</th>
-                                        <th class="p-4 text-center w-16 whitespace-nowrap">操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="task-list-tbody" class="text-xs divide-y divide-zinc-800/60 text-zinc-300"></tbody>
-                            </table>
+                        <div>
+                            <label class="block text-xs text-zinc-400 mb-1">期限（デッドライン） <span class="text-zinc-500">*</span></label>
+                            <input type="date" id="task-due-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                         </div>
+                        <div>
+                            <label class="block text-xs text-zinc-400 mb-1">金額（半角数字）</label>
+                            <input type="number" id="task-amount" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl" placeholder="50000">
+                        </div>
+                        <div class="md:col-span-3">
+                            <label class="block text-xs text-zinc-400 mb-1">タスク内容・詳細 <span class="text-zinc-500">*</span></label>
+                            <textarea id="task-content" required rows="3" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl" placeholder="依頼内容や作業詳細を入力してください"></textarea>
+                        </div>
+                        <div class="md:col-span-3 text-right">
+                            <button type="submit" class="px-6 py-2.5 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer w-full md:w-auto rounded-xl">タスクを登録する</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-lg">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-zinc-950 border-b border-zinc-800 text-[11px] font-bold text-zinc-400 uppercase tracking-widest">
+                                    <th class="p-4 w-32 whitespace-nowrap">受注日</th>
+                                    <th class="p-4 w-32 whitespace-nowrap">期限</th>
+                                    <th class="p-4 w-40 whitespace-nowrap">金額</th>
+                                    <th class="p-4 whitespace-nowrap">内容</th>
+                                    <th class="p-4 text-center w-20 whitespace-nowrap">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="task-list-tbody" class="text-xs divide-y divide-zinc-800/60 text-zinc-300"></tbody>
+                        </table>
                     </div>
                 </div>
             </section>
 
             <!-- 📅 スケジュール -->
-            <section id="tab-schedule" class="tab-content hidden space-y-6">
-                <div class="border-b border-zinc-800/80 pb-4">
-                    <h3 class="text-2xl font-bold tracking-wider text-zinc-100">スケジュール管理</h3>
+            <section id="tab-schedule" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold tracking-wider text-zinc-100">スケジュール管理</h3>
                     <p class="text-xs text-zinc-500 mt-1">会議や締め切り、重要なイベントの予定をカレンダー上で視覚的に管理します。</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <!-- 左側: カレンダー表示 -->
-                    <div class="lg:col-span-2 bg-zinc-900 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
+                    <div class="lg:col-span-2 bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-lg">
                         <div class="flex items-center justify-between mb-6 pb-4 border-b border-zinc-800">
                             <div class="flex items-center gap-3">
                                 <h4 id="calendar-month-year" class="text-sm font-bold tracking-widest text-zinc-100 uppercase">2026 / 01</h4>
                                 <input type="month" id="calendar-month-picker" onchange="jumpToMonth(this.value)" class="bg-zinc-950 border border-zinc-800 text-xs px-2 py-1 rounded-lg text-zinc-400 focus:outline-none focus:border-zinc-600">
                             </div>
                             <div class="flex items-center gap-2">
-                                <button onclick="changeCalendarMonth(-1)" class="p-2 bg-zinc-950 border border-zinc-800 hover:border-zinc-600 text-zinc-300 transition rounded-xl cursor-pointer">
+                                <button onclick="changeCalendarMonth(-1)" class="p-2 bg-zinc-950 border border-zinc-800 hover:border-zinc-600 text-zinc-300 transition rounded-xl">
                                     <i data-lucide="chevron-left" class="w-4 h-4"></i>
                                 </button>
-                                <button onclick="changeCalendarMonth(1)" class="p-2 bg-zinc-950 border border-zinc-800 hover:border-zinc-600 text-zinc-300 transition rounded-xl cursor-pointer">
+                                <button onclick="changeCalendarMonth(1)" class="p-2 bg-zinc-950 border border-zinc-800 hover:border-zinc-600 text-zinc-300 transition rounded-xl">
                                     <i data-lucide="chevron-right" class="w-4 h-4"></i>
                                 </button>
                             </div>
@@ -436,30 +394,30 @@
 
                     <!-- 右側: 予定追加フォーム & 当日予定一覧 -->
                     <div class="space-y-6">
-                        <div class="bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
-                            <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-4 flex items-center gap-2 pb-3 border-b border-zinc-800/60">
-                                <i data-lucide="plus-circle" class="w-4 h-4 text-zinc-400"></i>予定の追加
+                        <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-lg">
+                            <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-4 flex items-center gap-2">
+                                <i data-lucide="plus-circle" class="w-4 h-4"></i>予定の追加
                             </h4>
                             <form onsubmit="saveScheduleEvent(event)" class="space-y-4">
                                 <div>
-                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">件名・内容 <span class="text-rose-500">*</span></label>
-                                    <input type="text" id="sched-title" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                                    <label class="block text-xs text-zinc-400 mb-1">件名・内容 <span class="text-zinc-500">*</span></label>
+                                    <input type="text" id="sched-title" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                                 </div>
                                 <div>
-                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">日付 <span class="text-rose-500">*</span></label>
-                                    <input type="date" id="sched-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                                    <label class="block text-xs text-zinc-400 mb-1">日付 <span class="text-zinc-500">*</span></label>
+                                    <input type="date" id="sched-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                                 </div>
                                 <div>
-                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">担当者</label>
-                                    <input type="text" id="sched-pic" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="例: 山田">
+                                    <label class="block text-xs text-zinc-400 mb-1">担当者</label>
+                                    <input type="text" id="sched-pic" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl" placeholder="例: 山田">
                                 </div>
-                                <button type="submit" class="w-full py-3 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer rounded-xl shadow-md mt-2">
+                                <button type="submit" class="w-full py-3 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer rounded-xl">
                                     予定を保存する
                                 </button>
                             </form>
                         </div>
 
-                        <div class="bg-zinc-900 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
+                        <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-lg">
                             <h4 class="text-xs font-bold text-zinc-400 tracking-wider uppercase mb-3">予定リスト</h4>
                             <div id="schedule-list" class="space-y-2 max-h-60 overflow-y-auto text-xs divide-y divide-zinc-800/60">
                                 <p class="text-zinc-500 py-2">登録された予定はありません</p>
@@ -470,77 +428,66 @@
             </section>
 
             <!-- 打ち合わせ履歴 -->
-            <section id="tab-meetings" class="tab-content hidden space-y-6">
-                <div class="border-b border-zinc-800/80 pb-4">
-                    <h3 class="text-2xl font-bold tracking-wider text-zinc-100">打ち合わせ履歴</h3>
+            <section id="tab-meetings" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold tracking-wider text-zinc-100">打ち合わせ履歴</h3>
                     <p class="text-xs text-zinc-500 mt-1">顧客（企業）ごとに商談や議事録を記録します。</p>
                 </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- 左カラム: フォーム -->
-                    <div class="lg:col-span-5 bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
-                        <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-5 flex items-center gap-2 pb-3 border-b border-zinc-800/60">
-                            <i data-lucide="plus-circle" class="w-4 h-4 text-zinc-400"></i>議事録の新規作成
-                        </h4>
-                        <form id="meeting-form" onsubmit="saveMeeting(event)" class="space-y-4">
+                <div class="bg-zinc-900 border border-zinc-800 p-6 mb-8 rounded-2xl shadow-lg">
+                    <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-4 flex items-center gap-2"><i data-lucide="plus-circle" class="w-4 h-4"></i>議事録の新規作成</h4>
+                    <form id="meeting-form" onsubmit="saveMeeting(event)" class="grid grid-cols-1 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div>
-                                <label class="block text-xs text-zinc-400 mb-1.5 font-medium">対象顧客（企業） <span class="text-rose-500">*</span></label>
-                                <select id="meeting-customer-select" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition"></select>
-                            </div>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">日時 <span class="text-rose-500">*</span></label>
-                                    <input type="date" id="meeting-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
-                                </div>
-                                <div>
-                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">参加者</label>
-                                    <input type="text" id="meeting-members" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="山田・佐藤">
-                                </div>
+                                <label class="block text-xs text-zinc-400 mb-1">対象顧客（企業） <span class="text-zinc-500">*</span></label>
+                                <select id="meeting-customer-select" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl"></select>
                             </div>
                             <div>
-                                <label class="block text-xs text-zinc-400 mb-1.5 font-medium">打ち合わせ内容・メモ <span class="text-rose-500">*</span></label>
-                                <textarea id="meeting-content" required rows="5" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="決定事項や次回タスク等"></textarea>
+                                <label class="block text-xs text-zinc-400 mb-1">日時 <span class="text-zinc-500">*</span></label>
+                                <input type="date" id="meeting-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                             </div>
-                            <button type="submit" class="w-full py-3 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer rounded-xl shadow-md mt-2">
-                                記録する
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- 右カラム: 一覧テーブル -->
-                    <div class="lg:col-span-7 bg-zinc-900 border border-zinc-800/80 rounded-2xl overflow-hidden shadow-xl">
-                        <div class="p-4 border-b border-zinc-800/80 bg-zinc-950/40 flex items-center justify-between">
-                            <span class="text-xs font-bold text-zinc-400 tracking-wider uppercase">打ち合わせ履歴一覧</span>
+                            <div>
+                                <label class="block text-xs text-zinc-400 mb-1">参加者</label>
+                                <input type="text" id="meeting-members" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl" placeholder="山田・佐藤">
+                            </div>
                         </div>
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full text-left border-collapse">
-                                <thead>
-                                    <tr class="bg-zinc-950/80 border-b border-zinc-800 text-[11px] font-bold text-zinc-400 uppercase tracking-widest">
-                                        <th class="p-4 whitespace-nowrap">日時</th>
-                                        <th class="p-4 whitespace-nowrap">対象顧客</th>
-                                        <th class="p-4 whitespace-nowrap">参加者</th>
-                                        <th class="p-4 whitespace-nowrap">内容</th>
-                                        <th class="p-4 text-center w-16 whitespace-nowrap">操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="meeting-list-tbody" class="text-xs divide-y divide-zinc-800/60 text-zinc-300"></tbody>
-                            </table>
+                        <div>
+                            <label class="block text-xs text-zinc-400 mb-1">打ち合わせ内容・メモ <span class="text-zinc-500">*</span></label>
+                            <textarea id="meeting-content" required rows="4" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl" placeholder="決定事項や次回タスク等"></textarea>
                         </div>
+                        <div class="text-right">
+                            <button type="submit" class="px-6 py-2.5 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer rounded-xl">記録する</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-lg">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-zinc-950 border-b border-zinc-800 text-[11px] font-bold text-zinc-400 uppercase tracking-widest">
+                                    <th class="p-4 whitespace-nowrap">日時</th>
+                                    <th class="p-4 whitespace-nowrap">対象顧客</th>
+                                    <th class="p-4 whitespace-nowrap">参加者</th>
+                                    <th class="p-4 whitespace-nowrap">内容</th>
+                                    <th class="p-4 text-center w-20 whitespace-nowrap">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="meeting-list-tbody" class="text-xs divide-y divide-zinc-800/60 text-zinc-300"></tbody>
+                        </table>
                     </div>
                 </div>
             </section>
 
             <!-- 問い合わせ管理 -->
-            <section id="tab-inquiries" class="tab-content hidden space-y-6">
-                <div class="border-b border-zinc-800/80 pb-4">
-                    <h3 class="text-2xl font-bold tracking-wider text-zinc-100">問い合わせ管理</h3>
+            <section id="tab-inquiries" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold tracking-wider text-zinc-100">問い合わせ管理</h3>
                     <p class="text-xs text-zinc-500 mt-1">フォーム等からの問い合わせのステータス管理をします。</p>
                 </div>
-                <div class="bg-zinc-900 border border-zinc-800/80 rounded-2xl overflow-hidden shadow-xl">
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-lg">
                     <div class="overflow-x-auto">
                         <table class="min-w-full text-left border-collapse">
                             <thead>
-                                <tr class="bg-zinc-950/80 border-b border-zinc-800 text-[11px] font-bold text-zinc-400 uppercase tracking-widest">
+                                <tr class="bg-zinc-950 border-b border-zinc-800 text-[11px] font-bold text-zinc-400 uppercase tracking-widest">
                                     <th class="p-4">受付日</th>
                                     <th class="p-4">お名前/企業名</th>
                                     <th class="p-4">件名</th>
@@ -557,69 +504,61 @@
             </section>
 
             <!-- ファイル管理 -->
-            <section id="tab-files" class="tab-content hidden space-y-6">
-                <div class="border-b border-zinc-800/80 pb-4">
-                    <h3 class="text-2xl font-bold tracking-wider text-zinc-100">ファイル管理</h3>
+            <section id="tab-files" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold tracking-wider text-zinc-100">ファイル管理</h3>
                     <p class="text-xs text-zinc-500 mt-1">ファイルを追加してブラウザ上で保管・確認・プレビューできます。</p>
                 </div>
+                <div class="bg-zinc-900 border border-zinc-800 p-8 mb-8 text-center border-dashed border-zinc-700 hover:border-zinc-400 transition cursor-pointer rounded-2xl" onclick="document.getElementById('file-upload-input').click()">
+                    <i data-lucide="upload-cloud" class="w-8 h-8 text-zinc-300 mx-auto mb-2"></i>
+                    <p class="text-xs text-zinc-200 font-bold tracking-wider">ファイルを選択して追加</p>
+                    <p class="text-[10px] text-zinc-500 mt-1">画像、PDF、テキスト、ドキュメントなど</p>
+                    <input type="file" class="hidden" id="file-upload-input" onchange="handleFileUpload(event)">
+                </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- 左カラム: アップロードエリア -->
-                    <div class="lg:col-span-4 bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-dashed border-zinc-700/80 hover:border-zinc-400 transition cursor-pointer p-8 rounded-2xl shadow-xl text-center" onclick="document.getElementById('file-upload-input').click()">
-                        <i data-lucide="upload-cloud" class="w-10 h-10 text-zinc-400 mx-auto mb-3"></i>
-                        <p class="text-xs text-zinc-200 font-bold tracking-wider">ファイルを選択して追加</p>
-                        <p class="text-[10px] text-zinc-500 mt-1.5">画像、PDF、テキスト、ドキュメントなど</p>
-                        <input type="file" class="hidden" id="file-upload-input" onchange="handleFileUpload(event)">
-                    </div>
-
-                    <!-- 右カラム: 一覧テーブル -->
-                    <div class="lg:col-span-8 bg-zinc-900 border border-zinc-800/80 rounded-2xl overflow-hidden shadow-xl">
-                        <div class="p-4 border-b border-zinc-800/80 bg-zinc-950/40 flex items-center justify-between">
-                            <span class="text-xs font-bold text-zinc-400 tracking-wider uppercase">保管ファイル一覧</span>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full text-left border-collapse">
-                                <thead>
-                                    <tr class="bg-zinc-950/80 border-b border-zinc-800 text-[11px] font-bold text-zinc-400 uppercase tracking-widest">
-                                        <th class="p-4 whitespace-nowrap">ファイル名</th>
-                                        <th class="p-4 whitespace-nowrap">サイズ</th>
-                                        <th class="p-4 whitespace-nowrap">追加日時</th>
-                                        <th class="p-4 text-center w-40 whitespace-nowrap">操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="file-list-tbody" class="text-xs divide-y divide-zinc-800/60 text-zinc-300"></tbody>
-                            </table>
-                        </div>
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-lg">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-zinc-950 border-b border-zinc-800 text-[11px] font-bold text-zinc-400 uppercase tracking-widest">
+                                    <th class="p-4 whitespace-nowrap">ファイル名</th>
+                                    <th class="p-4 whitespace-nowrap">サイズ</th>
+                                    <th class="p-4 whitespace-nowrap">追加日時</th>
+                                    <th class="p-4 text-center w-40 whitespace-nowrap">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="file-list-tbody" class="text-xs divide-y divide-zinc-800/60 text-zinc-300"></tbody>
+                        </table>
                     </div>
                 </div>
             </section>
 
             <!-- 見積書 -->
-            <section id="tab-quotes" class="tab-content hidden space-y-6">
-                <div class="border-b border-zinc-800/80 pb-4">
-                    <h3 class="text-2xl font-bold tracking-wider text-zinc-100">見積書作成・PDF出力</h3>
+            <section id="tab-quotes" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold tracking-wider text-zinc-100">見積書作成・PDF出力</h3>
                     <p class="text-xs text-zinc-500 mt-1">必要な情報を入力して本格的な見積書PDFを発行できます。</p>
                 </div>
-                <div class="max-w-3xl bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
-                    <form onsubmit="generateDocumentPDF(event, '見積書')" class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-lg">
+                    <form onsubmit="generateDocumentPDF(event, '見積書')" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">宛名（企業名・お客様名） <span class="text-rose-500">*</span></label>
-                            <input type="text" id="doc-client" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="株式会社〇〇 御中">
+                            <label class="block text-xs text-zinc-400 mb-1">宛名（企業名・お客様名） <span class="text-zinc-500">*</span></label>
+                            <input type="text" id="doc-client" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl" placeholder="株式会社〇〇 御中">
                         </div>
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">発行日 <span class="text-rose-500">*</span></label>
-                            <input type="date" id="doc-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                            <label class="block text-xs text-zinc-400 mb-1">発行日 <span class="text-zinc-500">*</span></label>
+                            <input type="date" id="doc-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                         </div>
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">品名 / 業務項目 <span class="text-rose-500">*</span></label>
-                            <input type="text" id="doc-item" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="Webサイト制作およびシステム構築一式">
+                            <label class="block text-xs text-zinc-400 mb-1">品名 / 業務項目 <span class="text-zinc-500">*</span></label>
+                            <input type="text" id="doc-item" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl" placeholder="Webサイト制作およびシステム構築一式">
                         </div>
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">金額（税抜） <span class="text-rose-500">*</span></label>
-                            <input type="number" id="doc-amount" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="300000">
+                            <label class="block text-xs text-zinc-400 mb-1">金額（税抜） <span class="text-zinc-500">*</span></label>
+                            <input type="number" id="doc-amount" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl" placeholder="300000">
                         </div>
-                        <div class="sm:col-span-2 text-right pt-2">
-                            <button type="submit" class="px-8 py-3 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl shadow-md w-full sm:w-auto">
+                        <div class="md:col-span-2 text-right mt-2">
+                            <button type="submit" class="px-6 py-2.5 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer inline-flex items-center gap-2 rounded-xl">
                                 <i data-lucide="download" class="w-4 h-4"></i> 見積書PDFを出力
                             </button>
                         </div>
@@ -628,31 +567,31 @@
             </section>
 
             <!-- 請求書 -->
-            <section id="tab-invoices" class="tab-content hidden space-y-6">
-                <div class="border-b border-zinc-800/80 pb-4">
-                    <h3 class="text-2xl font-bold tracking-wider text-zinc-100">請求書作成・PDF出力</h3>
+            <section id="tab-invoices" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold tracking-wider text-zinc-100">請求書作成・PDF出力</h3>
                     <p class="text-xs text-zinc-500 mt-1">納品後の請求書PDFを発行できます。</p>
                 </div>
-                <div class="max-w-3xl bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
-                    <form onsubmit="generateDocumentPDF(event, '請求書')" class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-lg">
+                    <form onsubmit="generateDocumentPDF(event, '請求書')" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">請求先（企業名・御中） <span class="text-rose-500">*</span></label>
-                            <input type="text" id="inv-client" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="株式会社〇〇 御中">
+                            <label class="block text-xs text-zinc-400 mb-1">請求先（企業名・御中） <span class="text-zinc-500">*</span></label>
+                            <input type="text" id="inv-client" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl" placeholder="株式会社〇〇 御中">
                         </div>
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">請求日 <span class="text-rose-500">*</span></label>
-                            <input type="date" id="inv-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                            <label class="block text-xs text-zinc-400 mb-1">請求日 <span class="text-zinc-500">*</span></label>
+                            <input type="date" id="inv-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                         </div>
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">請求項目・内容 <span class="text-rose-500">*</span></label>
-                            <input type="text" id="inv-item" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="システム開発代金（〇月分）">
+                            <label class="block text-xs text-zinc-400 mb-1">請求項目・内容 <span class="text-zinc-500">*</span></label>
+                            <input type="text" id="inv-item" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl" placeholder="システム開発代金（〇月分）">
                         </div>
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">請求金額（税抜） <span class="text-rose-500">*</span></label>
-                            <input type="number" id="inv-amount" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="500000">
+                            <label class="block text-xs text-zinc-400 mb-1">請求金額（税抜） <span class="text-zinc-500">*</span></label>
+                            <input type="number" id="inv-amount" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl" placeholder="500000">
                         </div>
-                        <div class="sm:col-span-2 text-right pt-2">
-                            <button type="submit" class="px-8 py-3 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl shadow-md w-full sm:w-auto">
+                        <div class="md:col-span-2 text-right mt-2">
+                            <button type="submit" class="px-6 py-2.5 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer inline-flex items-center gap-2 rounded-xl">
                                 <i data-lucide="download" class="w-4 h-4"></i> 請求書PDFを出力
                             </button>
                         </div>
@@ -661,31 +600,31 @@
             </section>
 
             <!-- 契約書 -->
-            <section id="tab-contracts" class="tab-content hidden space-y-6">
-                <div class="border-b border-zinc-800/80 pb-4">
-                    <h3 class="text-2xl font-bold tracking-wider text-zinc-100">業務委託契約書作成・PDF出力</h3>
+            <section id="tab-contracts" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold tracking-wider text-zinc-100">業務委託契約書作成・PDF出力</h3>
                     <p class="text-xs text-zinc-500 mt-1">双方の取り決め事項を盛り込んだ契約書を作成してPDF化します。</p>
                 </div>
-                <div class="max-w-3xl bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
-                    <form onsubmit="generateContractPDF(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-lg">
+                    <form onsubmit="generateContractPDF(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">発注者（甲）名称 <span class="text-rose-500">*</span></label>
-                            <input type="text" id="con-party-a" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="株式会社サンプル">
+                            <label class="block text-xs text-zinc-400 mb-1">発注者（甲）名称 <span class="text-zinc-500">*</span></label>
+                            <input type="text" id="con-party-a" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl" placeholder="株式会社サンプル">
                         </div>
                         <div>
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">締結日 <span class="text-rose-500">*</span></label>
-                            <input type="date" id="con-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                            <label class="block text-xs text-zinc-400 mb-1">締結日 <span class="text-zinc-500">*</span></label>
+                            <input type="date" id="con-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl">
                         </div>
-                        <div class="sm:col-span-2">
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">委託業務内容 <span class="text-rose-500">*</span></label>
-                            <input type="text" id="con-title" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="Webシステム設計・開発・保守サポート業務">
+                        <div class="md:col-span-2">
+                            <label class="block text-xs text-zinc-400 mb-1">委託業務内容 <span class="text-zinc-500">*</span></label>
+                            <input type="text" id="con-title" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl" placeholder="Webシステム設計・開発・保守サポート業務">
                         </div>
-                        <div class="sm:col-span-2">
-                            <label class="block text-xs text-zinc-400 mb-1.5 font-medium">特記事項・契約条項メモ</label>
-                            <textarea id="con-terms" rows="4" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="納期：〇年〇月〇日 / 支払条件：月末締め翌月末払い"></textarea>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs text-zinc-400 mb-1">特記事項・契約条項メモ</label>
+                            <textarea id="con-terms" rows="3" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 text-sm focus:outline-none focus:border-zinc-600 rounded-xl" placeholder="納期：〇年〇月〇日 / 支払条件：月末締め翌月末払い"></textarea>
                         </div>
-                        <div class="sm:col-span-2 text-right pt-2">
-                            <button type="submit" class="px-8 py-3 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl shadow-md w-full sm:w-auto">
+                        <div class="md:col-span-2 text-right mt-2">
+                            <button type="submit" class="px-6 py-2.5 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer inline-flex items-center gap-2 rounded-xl">
                                 <i data-lucide="download" class="w-4 h-4"></i> 契約書PDFを出力
                             </button>
                         </div>
@@ -693,41 +632,41 @@
                 </div>
             </section>
 
-            <!-- 📈 売上・利益集計ダッシュボード -->
-            <section id="tab-sales" class="tab-content hidden space-y-6">
-                <div class="border-b border-zinc-800/80 pb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <!-- 📈 売上・利益集計ダッシュボード（要求9項目完全実装） -->
+            <section id="tab-sales" class="tab-content hidden">
+                <div class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
-                        <h3 class="text-2xl font-bold tracking-wider text-zinc-100">売上・経営分析ダッシュボード</h3>
+                        <h3 class="text-xl font-bold tracking-wider text-zinc-100">売上・経営分析ダッシュボード</h3>
                         <p class="text-xs text-zinc-500 mt-1">リアルタイムで集計された詳細経営データ指標を表示します。</p>
                     </div>
                     <!-- 目標設定エリア -->
-                    <div class="flex items-center gap-2 bg-zinc-900/90 p-2 px-4 border border-zinc-800/80 rounded-xl shadow-sm self-start md:self-auto">
-                        <span class="text-xs text-zinc-400 font-medium">月間目標: ¥</span>
-                        <input type="number" id="monthly-target-input" value="3000000" onchange="renderSales()" class="w-28 bg-zinc-950 border border-zinc-800 text-xs px-2.5 py-1 rounded-lg text-zinc-100 focus:outline-none focus:border-zinc-600">
+                    <div class="flex items-center gap-2 bg-zinc-900 p-2 px-4 border border-zinc-800 rounded-xl">
+                        <span class="text-xs text-zinc-400">月間目標: ¥</span>
+                        <input type="number" id="monthly-target-input" value="3000000" onchange="renderSales()" class="w-28 bg-zinc-950 border border-zinc-800 text-xs px-2 py-1 rounded-lg text-zinc-100 focus:outline-none focus:border-zinc-600">
                     </div>
                 </div>
 
                 <!-- 1. 基本数字 & 目標達成率 & 未入金 & 前月比・前年比 -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                     <!-- 今月売上 & 目標達成率 -->
-                    <div class="bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl relative overflow-hidden">
+                    <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-lg relative overflow-hidden">
                         <p class="text-[10px] font-bold text-zinc-500 tracking-widest uppercase">今月売上 / 達成率</p>
                         <p id="sales-month-amount" class="text-2xl font-bold text-zinc-100 mt-2">¥0</p>
-                        <div class="mt-4">
-                            <div class="flex justify-between text-[11px] mb-1.5">
+                        <div class="mt-3">
+                            <div class="flex justify-between text-[11px] mb-1">
                                 <span class="text-zinc-500">目標達成率</span>
                                 <span id="sales-target-rate" class="font-bold text-zinc-200">0%</span>
                             </div>
-                            <div class="w-full bg-zinc-950 h-2 rounded-full overflow-hidden border border-zinc-800/80">
+                            <div class="w-full bg-zinc-950 h-2 rounded-full overflow-hidden border border-zinc-800">
                                 <div id="sales-target-bar" class="bg-zinc-100 h-full w-0 transition-all duration-500"></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- 前月比 & 前年比 -->
-                    <div class="bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
+                    <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-lg">
                         <p class="text-[10px] font-bold text-zinc-500 tracking-widest uppercase">売上成長率 (MoM / YoY)</p>
-                        <div class="mt-3 space-y-2.5">
+                        <div class="mt-2 space-y-2">
                             <div class="flex justify-between items-center text-xs">
                                 <span class="text-zinc-400">前月比 (MoM)</span>
                                 <span id="sales-mom-rate" class="font-bold text-zinc-100">-- %</span>
@@ -740,14 +679,14 @@
                     </div>
 
                     <!-- 未入金管理 -->
-                    <div class="bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
+                    <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-lg">
                         <p class="text-[10px] font-bold text-zinc-500 tracking-widest uppercase">未入金管理</p>
                         <p id="sales-unpaid-amount" class="text-2xl font-bold text-zinc-100 mt-2">¥0</p>
                         <p id="sales-unpaid-count" class="text-xs text-zinc-500 mt-2">未入金案件: 0件</p>
                     </div>
 
                     <!-- 売上予測 -->
-                    <div class="bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
+                    <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-lg">
                         <p class="text-[10px] font-bold text-zinc-500 tracking-widest uppercase">来月・着地売上予測</p>
                         <p id="sales-forecast-amount" class="text-2xl font-bold text-zinc-100 mt-2">¥0</p>
                         <p class="text-[10px] text-zinc-500 mt-2">進行中案件の想定着地金額</p>
@@ -755,20 +694,20 @@
                 </div>
 
                 <!-- 2. 受注率 & 平均案件単価 & 平均制作日数 -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-lg">
                         <p class="text-[10px] font-bold text-zinc-500 tracking-widest uppercase">受注率 (Win Rate)</p>
                         <p id="sales-win-rate" class="text-3xl font-bold text-zinc-100 mt-2">0%</p>
                         <p id="sales-win-count" class="text-xs text-zinc-500 mt-2">完了 0 / 全案件 0</p>
                     </div>
 
-                    <div class="bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
+                    <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-lg">
                         <p class="text-[10px] font-bold text-zinc-500 tracking-widest uppercase">平均案件単価</p>
                         <p id="sales-average-amount" class="text-3xl font-bold text-zinc-100 mt-2">¥0</p>
                         <p class="text-xs text-zinc-500 mt-2">全受注案件の平均</p>
                     </div>
 
-                    <div class="bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
+                    <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-lg">
                         <p class="text-[10px] font-bold text-zinc-500 tracking-widest uppercase">平均制作・対応日数</p>
                         <p id="sales-avg-days" class="text-3xl font-bold text-zinc-100 mt-2">0 日</p>
                         <p class="text-xs text-zinc-500 mt-2">契約〜完了までの平均日数</p>
@@ -776,11 +715,11 @@
                 </div>
 
                 <!-- 3. 顧客別売上ランキング & サービス別売上 -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                     <!-- 顧客別売上ランキング -->
-                    <div class="bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
-                        <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-4 flex items-center gap-2 pb-3 border-b border-zinc-800/60">
-                            <i data-lucide="trophy" class="w-4 h-4 text-zinc-400"></i> 顧客別売上ランキング TOP 5
+                    <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-lg">
+                        <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-4 flex items-center gap-2">
+                            <i data-lucide="trophy" class="w-4 h-4"></i> 顧客別売上ランキング TOP 5
                         </h4>
                         <div id="customer-ranking-list" class="space-y-3 text-xs">
                             <p class="text-zinc-500">データがありません</p>
@@ -788,9 +727,9 @@
                     </div>
 
                     <!-- サービス別売上 -->
-                    <div class="bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
-                        <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-4 flex items-center gap-2 pb-3 border-b border-zinc-800/60">
-                            <i data-lucide="pie-chart" class="w-4 h-4 text-zinc-400"></i> サービス別売上内訳
+                    <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-lg">
+                        <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-4 flex items-center gap-2">
+                            <i data-lucide="pie-chart" class="w-4 h-4"></i> サービス別売上内訳
                         </h4>
                         <div id="service-breakdown-list" class="space-y-3 text-xs">
                             <p class="text-zinc-500">データがありません</p>
@@ -966,16 +905,16 @@ function renderCustomers(){
   const tbody = document.getElementById("customer-list-tbody");
   if (!tbody) return;
   tbody.innerHTML = customers.length ? customers.map(c => `
-    <tr class="hover:bg-zinc-800/30 transition">
+    <tr>
       <td class="p-4 font-semibold text-zinc-100">${c.name}</td>
       <td class="p-4">${c.pic || "-"}</td>
       <td class="p-4">${c.email || "-"}</td>
       <td class="p-4">${c.address || "-"}</td>
       <td class="p-4 text-center">
-        <button onclick="deleteCustomer('${c.id}')" class="text-zinc-500 hover:text-rose-400 transition text-xs">削除</button>
+        <button onclick="deleteCustomer('${c.id}')" class="text-zinc-500 hover:text-zinc-200 transition text-xs">削除</button>
       </td>
     </tr>
-  `).join("") : `<tr><td class="p-4 text-zinc-500 text-center" colspan="5">データなし</td></tr>`;
+  `).join("") : `<tr><td class="p-4 text-zinc-500" colspan="5">データなし</td></tr>`;
 }
 
 async function saveSite(e){
@@ -1000,16 +939,16 @@ function renderSites(){
   tbody.innerHTML = sites.length ? sites.map(s => {
     const cust = customers.find(c => c.id === s.customerId);
     return `
-      <tr class="hover:bg-zinc-800/30 transition">
+      <tr>
         <td class="p-4 font-semibold text-zinc-100">${s.name}</td>
         <td class="p-4"><a href="${s.url}" target="_blank" class="text-zinc-300 hover:underline flex items-center gap-1">${s.url}</a></td>
         <td class="p-4">${cust ? cust.name : "-"}</td>
         <td class="p-4 text-center">
-          <button onclick="deleteSite('${s.id}')" class="text-zinc-500 hover:text-rose-400 transition text-xs">削除</button>
+          <button onclick="deleteSite('${s.id}')" class="text-zinc-500 hover:text-zinc-200 transition text-xs">削除</button>
         </td>
       </tr>
     `;
-  }).join("") : `<tr><td class="p-4 text-zinc-500 text-center" colspan="4">なし</td></tr>`;
+  }).join("") : `<tr><td class="p-4 text-zinc-500" colspan="4">なし</td></tr>`;
 }
 
 async function saveProject(e){
@@ -1074,17 +1013,17 @@ function renderMeetings(){
   tbody.innerHTML = meetings.length ? meetings.map(m => {
     const cust = customers.find(c => c.id === m.customerId);
     return `
-      <tr class="hover:bg-zinc-800/30 transition">
+      <tr>
         <td class="p-4 whitespace-nowrap text-zinc-400">${m.date || "-"}</td>
         <td class="p-4 whitespace-nowrap font-bold text-zinc-100">${cust ? cust.name : "未選択"}</td>
         <td class="p-4 whitespace-nowrap">${m.members || "-"}</td>
         <td class="p-4">${m.content}</td>
         <td class="p-4 text-center">
-          <button onclick="deleteMeeting('${m.id}')" class="text-zinc-500 hover:text-rose-400 transition text-xs">削除</button>
+          <button onclick="deleteMeeting('${m.id}')" class="text-zinc-500 hover:text-zinc-200 transition text-xs">削除</button>
         </td>
       </tr>
     `;
-  }).join("") : `<tr><td class="p-4 text-zinc-500 text-center" colspan="5">議事録はありません</td></tr>`;
+  }).join("") : `<tr><td class="p-4 text-zinc-500" colspan="5">議事録はありません</td></tr>`;
 }
 
 /* 📅 カレンダー＆スケジュール制御 */
@@ -1176,7 +1115,7 @@ function renderScheduleList() {
                 <p class="font-bold text-zinc-200">${s.title}</p>
                 <p class="text-[10px] text-zinc-500">${s.date} ${s.pic ? `(担当: ${s.pic})` : ''}</p>
             </div>
-            <button onclick="deleteSchedule('${s.id}')" class="text-zinc-500 hover:text-rose-400 text-xs">削除</button>
+            <button onclick="deleteSchedule('${s.id}')" class="text-zinc-500 hover:text-zinc-200 text-xs">削除</button>
         </div>
     `).join('');
 }
@@ -1187,7 +1126,7 @@ function renderProjects(){
   tbody.innerHTML = projects.length ? projects.map(p => {
     const cust = customers.find(c => c.id === p.customerId);
     return `
-      <tr class="hover:bg-zinc-800/30 transition">
+      <tr>
         <td class="p-4 font-semibold text-zinc-100">${cust ? cust.name : "未設定"}</td>
         <td class="p-4">${p.name}</td>
         <td class="p-4"><span class="px-2 py-0.5 bg-zinc-800 border border-zinc-700 text-zinc-300 rounded-md text-[10px]">${p.service || "未設定"}</span></td>
@@ -1196,27 +1135,27 @@ function renderProjects(){
         <td class="p-4"><span class="px-2 py-0.5 rounded-md text-[10px] ${p.status==='完了'?'bg-zinc-100 text-zinc-950 font-bold':'bg-zinc-800 text-zinc-400'}">${p.status}</span></td>
         <td class="p-4"><span class="px-2 py-0.5 rounded-md text-[10px] ${p.payment==='未入金'?'bg-zinc-800 text-zinc-300 border border-zinc-700':'bg-zinc-900 text-zinc-500'}">${p.payment}</span></td>
         <td class="p-4 text-center">
-          <button onclick="deleteProject('${p.id}')" class="text-zinc-500 hover:text-rose-400 transition text-xs">削除</button>
+          <button onclick="deleteProject('${p.id}')" class="text-zinc-500 hover:text-zinc-200 transition text-xs">削除</button>
         </td>
       </tr>
     `;
-  }).join("") : `<tr><td class="p-4 text-zinc-500 text-center" colspan="8">データなし</td></tr>`;
+  }).join("") : `<tr><td class="p-4 text-zinc-500" colspan="8">データなし</td></tr>`;
 }
 
 function renderTasks(){
   const tbody = document.getElementById("task-list-tbody");
   if (!tbody) return;
   tbody.innerHTML = tasks.length ? tasks.map(t => `
-    <tr class="hover:bg-zinc-800/30 transition">
+    <tr>
       <td class="p-4 text-zinc-400">${t.orderDate}</td>
       <td class="p-4 font-semibold text-zinc-100">${t.dueDate}</td>
       <td class="p-4 font-mono">¥${(t.amount || 0).toLocaleString()}</td>
       <td class="p-4 whitespace-pre-wrap">${t.content}</td>
       <td class="p-4 text-center">
-        <button onclick="deleteTask('${t.id}')" class="text-zinc-500 hover:text-rose-400 transition text-xs">削除</button>
+        <button onclick="deleteTask('${t.id}')" class="text-zinc-500 hover:text-zinc-200 transition text-xs">削除</button>
       </td>
     </tr>
-  `).join("") : `<tr><td class="p-4 text-zinc-500 text-center" colspan="5">タスクなし</td></tr>`;
+  `).join("") : `<tr><td class="p-4 text-zinc-500" colspan="5">タスクなし</td></tr>`;
 }
 
 function updateSelectBoxes(){
@@ -1230,7 +1169,7 @@ function updateSelectBoxes(){
   if(meetSel) meetSel.innerHTML = opts;
 }
 
-/* 📊 経営分析・売上集計の更新 */
+/* 📊 経営分析・売上集計の更新（要求された全9項目対応） */
 function renderSales(){
   const targetMonthly = Number(document.getElementById("monthly-target-input").value) || 3000000;
   
@@ -1240,6 +1179,7 @@ function renderSales(){
   const prevMonth = currentMonth === 1 ? 12 : currentMonth - 1;
   const prevMonthYear = currentMonth === 1 ? currentYear - 1 : currentYear;
 
+  // 今月の完工・受注データ
   let currentMonthSales = 0;
   let prevMonthSales = 0;
   let lastYearSales = 0;
@@ -1261,6 +1201,7 @@ function renderSales(){
     const pYear = pDate.getFullYear();
     const pMonth = pDate.getMonth() + 1;
 
+    // 前月・前年比の集計
     if(pYear === currentYear && pMonth === currentMonth) {
         currentMonthSales += amt;
     }
@@ -1271,16 +1212,19 @@ function renderSales(){
         lastYearSales += amt;
     }
 
+    // 未入金管理
     if(p.payment === "未入金") {
         unpaidTotal += amt;
         unpaidCount++;
     }
 
+    // 全受注入金計算（単価用）
     if(p.status !== "失注") {
         totalProjectAmount += amt;
         validProjectCount++;
     }
 
+    // 平均制作日数の計算
     if(p.date && p.endDate) {
         const start = new Date(p.date);
         const end = new Date(p.endDate);
@@ -1291,46 +1235,56 @@ function renderSales(){
         }
     }
 
+    // 顧客別ランキング
     const cust = customers.find(c => c.id === p.customerId);
     const custName = cust ? cust.name : "その他";
     customerMap[custName] = (customerMap[custName] || 0) + amt;
 
+    // サービス別売上
     const srv = p.service || "その他";
     serviceMap[srv] = (serviceMap[srv] || 0) + amt;
   });
 
+  // 1. 売上目標達成率
   const targetRate = Math.min(Math.round((currentMonthSales / targetMonthly) * 100), 100);
   document.getElementById("sales-month-amount").textContent = `¥${currentMonthSales.toLocaleString()}`;
   document.getElementById("sales-target-rate").textContent = `${targetRate}%`;
   document.getElementById("sales-target-bar").style.width = `${targetRate}%`;
 
+  // 2. 前月比・前年比
   const mom = prevMonthSales ? Math.round(((currentMonthSales - prevMonthSales) / prevMonthSales) * 100) : 0;
   const yoy = lastYearSales ? Math.round(((currentMonthSales - lastYearSales) / lastYearSales) * 100) : 0;
   document.getElementById("sales-mom-rate").textContent = `${mom >= 0 ? '+' : ''}${mom}%`;
   document.getElementById("sales-yoy-rate").textContent = `${yoy >= 0 ? '+' : ''}${yoy}%`;
 
+  // 3. 未入金管理
   document.getElementById("sales-unpaid-amount").textContent = `¥${unpaidTotal.toLocaleString()}`;
   document.getElementById("sales-unpaid-count").textContent = `未入金案件: ${unpaidCount}件`;
 
+  // 4. 売上予測 (進行中案件 + 今月既存売上)
   const ongoingAmount = projects.filter(p => p.status === "進行中").reduce((acc, curr) => acc + (curr.amount || 0), 0);
   document.getElementById("sales-forecast-amount").textContent = `¥${(currentMonthSales + ongoingAmount).toLocaleString()}`;
 
+  // 5. 受注率
   const completedCount = projects.filter(p => p.status === "完了").length;
   const totalAllProjects = projects.length;
   const winRate = totalAllProjects ? Math.round((completedCount / totalAllProjects) * 100) : 0;
   document.getElementById("sales-win-rate").textContent = `${winRate}%`;
   document.getElementById("sales-win-count").textContent = `完了 ${completedCount} / 全案件 ${totalAllProjects}`;
 
+  // 6. 平均案件単価
   const avgAmount = validProjectCount ? Math.round(totalProjectAmount / validProjectCount) : 0;
   document.getElementById("sales-average-amount").textContent = `¥${avgAmount.toLocaleString()}`;
 
+  // 7. 平均制作日数
   const avgDays = daysCount ? Math.round(totalDays / daysCount) : 0;
   document.getElementById("sales-avg-days").textContent = `${avgDays} 日`;
 
+  // 8. 顧客別売上ランキング
   const sortedCustomers = Object.entries(customerMap).sort((a,b) => b[1] - a[1]).slice(0, 5);
   const custRankingEl = document.getElementById("customer-ranking-list");
   custRankingEl.innerHTML = sortedCustomers.length ? sortedCustomers.map(([name, amt], idx) => `
-      <div class="flex items-center justify-between p-2.5 bg-zinc-950/60 rounded-xl border border-zinc-800/80">
+      <div class="flex items-center justify-between p-2 bg-zinc-950/60 rounded-xl border border-zinc-800/80">
           <div class="flex items-center gap-2">
               <span class="w-5 h-5 flex items-center justify-center text-[10px] font-bold ${idx===0?'bg-zinc-100 text-zinc-950':'bg-zinc-800 text-zinc-400'} rounded-full">${idx+1}</span>
               <span class="font-bold text-zinc-200">${name}</span>
@@ -1339,10 +1293,11 @@ function renderSales(){
       </div>
   `).join('') : `<p class="text-zinc-500">データがありません</p>`;
 
+  // 9. サービス別売上
   const sortedServices = Object.entries(serviceMap).sort((a,b) => b[1] - a[1]);
   const serviceEl = document.getElementById("service-breakdown-list");
   serviceEl.innerHTML = sortedServices.length ? sortedServices.map(([srv, amt]) => `
-      <div class="flex items-center justify-between p-2.5 bg-zinc-950/60 rounded-xl border border-zinc-800/80">
+      <div class="flex items-center justify-between p-2 bg-zinc-950/60 rounded-xl border border-zinc-800/80">
           <span class="text-zinc-300">${srv}</span>
           <span class="font-mono text-zinc-100">¥${amt.toLocaleString()}</span>
       </div>
@@ -1381,16 +1336,16 @@ function renderFileList() {
     if(!tbody) return;
 
     tbody.innerHTML = localFiles.length ? localFiles.map(f => `
-        <tr class="hover:bg-zinc-800/30 transition">
+        <tr>
             <td class="p-4 font-semibold text-zinc-100">${f.name}</td>
             <td class="p-4 text-zinc-400">${f.size}</td>
             <td class="p-4 text-zinc-400">${f.date}</td>
             <td class="p-4 text-center space-x-2">
                 <a href="${f.url}" target="_blank" class="text-zinc-300 hover:underline">開く/表示</a>
-                <button onclick="deleteFile('${f.id}')" class="text-zinc-500 hover:text-rose-400">削除</button>
+                <button onclick="deleteFile('${f.id}')" class="text-zinc-500 hover:text-zinc-200">削除</button>
             </td>
         </tr>
-    `).join('') : `<tr><td class="p-4 text-zinc-500 text-center" colspan="4">ファイルはありません</td></tr>`;
+    `).join('') : `<tr><td class="p-4 text-zinc-500" colspan="4">ファイルはありません</td></tr>`;
 }
 
 /* 📄 PDF発行エンジン */
