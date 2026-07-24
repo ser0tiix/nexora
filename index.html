@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEXORA GROUP - 業務管理システム</title>
-    <!-- Tailwind CSS, Lucideアイコン, html2pdfの読み込み -->
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -12,7 +12,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&display=swap');
         
-        /* すべてのフォントを Noto Serif JP に完全統一 */
         *, *::before, *::after, input, select, textarea, button {
             font-family: 'Noto Serif JP', serif !important;
         }
@@ -22,7 +21,6 @@
             .no-print { display: none; }
         }
 
-        /* カレンダーアイコンのカラー調整（ダークモード対応） */
         ::-webkit-calendar-picker-indicator {
             filter: invert(1);
             cursor: pointer;
@@ -31,7 +29,7 @@
 </head>
 <body class="bg-gray-950 text-gray-100 min-h-screen">
 
-    <!-- ================= 1. ログイン画面 ================= -->
+    <!-- ログインページ -->
     <div id="login-page" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-950 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.05),transparent_60%)] p-4">
         <div class="w-full max-w-md p-6 sm:p-8 bg-gray-900/80 backdrop-blur-xl border border-gray-800 rounded-2xl shadow-2xl text-center">
             <div class="inline-flex p-3 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl mb-4">
@@ -39,7 +37,6 @@
             </div>
             <h1 class="text-2xl font-bold text-gray-100 tracking-wider">NEXORA GROUP</h1>
             
-            <!-- Enterキーで送信をハンドリングするためのformタグ -->
             <form onsubmit="handleLogin(event)">
                 <div class="text-left mb-6">
                     <label class="block text-xs font-semibold text-gray-400 tracking-wider mb-2">password</label>
@@ -53,10 +50,10 @@
         </div>
     </div>
 
-    <!-- ================= 2. メインダッシュボード ================= -->
+    <!-- ダッシュボード本体 -->
     <div id="dashboard-page" class="hidden min-h-screen flex flex-col md:flex-row bg-gray-950">
-        
-        <!-- モバイル用トップバー（ヘッダー） -->
+  
+        <!-- モバイル用ヘッダー -->
         <header class="md:hidden bg-gray-900 border-b border-gray-800 flex items-center justify-between p-4 sticky top-0 z-20 w-full">
             <h2 class="text-md font-bold text-amber-400 tracking-wider">NEXORA GROUP</h2>
             <button onclick="toggleMobileSidebar()" class="p-2 text-gray-400 hover:text-amber-400 focus:outline-none cursor-pointer">
@@ -64,37 +61,62 @@
             </button>
         </header>
 
-        <!-- モバイル用サイドバー背景オーバーレイ -->
         <div id="sidebar-backdrop" onclick="toggleMobileSidebar()" class="hidden fixed inset-0 bg-black/60 z-20 md:hidden"></div>
 
-        <!-- サイドバーナビゲーション -->
+        <!-- サイドバー -->
         <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-gray-900 border-r border-gray-800 flex flex-col justify-between h-screen z-30 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out md:relative md:h-screen">
-            <div>
+            <div class="overflow-y-auto">
                 <div class="p-6 border-b border-gray-800/60 flex items-center justify-between">
                     <div>
                         <h2 class="text-lg font-bold text-amber-400">NEXORA GROUP</h2>
                         <p class="text-[10px] text-gray-500 tracking-widest uppercase">Production Env</p>
                     </div>
-                    <!-- サイドバー内の閉じるボタン（モバイルのみ表示） -->
+            
                     <button onclick="toggleMobileSidebar()" class="md:hidden p-1 text-gray-500 hover:text-amber-400">
                         <i data-lucide="x" class="w-5 h-5"></i>
                     </button>
                 </div>
+                
+                <!-- ナビゲーションメニュー（全機能追加済み） -->
                 <nav class="p-4 space-y-1">
-                    <button onclick="switchTab('tab-customers')" class="tab-btn w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl text-amber-400 bg-amber-500/10 border border-amber-500/20 text-left cursor-pointer" data-tab="tab-customers">
-                        <i data-lucide="users" class="w-5 h-5"></i>顧客管理
+                    <button onclick="switchTab('tab-customers')" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl text-amber-400 bg-amber-500/10 border border-amber-500/20 text-left cursor-pointer" data-tab="tab-customers">
+                        <i data-lucide="users" class="w-4 h-4"></i>顧客管理
                     </button>
-                    <button onclick="switchTab('tab-sites')" class="tab-btn w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 text-left cursor-pointer" data-tab="tab-sites">
-                        <i data-lucide="globe" class="w-5 h-5"></i>サイト一覧・登録
+                    <button onclick="switchTab('tab-sites')" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 text-left cursor-pointer" data-tab="tab-sites">
+                        <i data-lucide="globe" class="w-4 h-4"></i>サイト一覧・登録
                     </button>
-                    <button onclick="switchTab('tab-projects')" class="tab-btn w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 text-left cursor-pointer" data-tab="tab-projects">
-                        <i data-lucide="file-text" class="w-5 h-5"></i>案件管理・書類出力
+                    <button onclick="switchTab('tab-projects')" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 text-left cursor-pointer" data-tab="tab-projects">
+                        <i data-lucide="briefcase" class="w-4 h-4"></i>案件管理
                     </button>
-                    <button onclick="switchTab('tab-tasks')" class="tab-btn w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 text-left cursor-pointer" data-tab="tab-tasks">
-                        <i data-lucide="check-square" class="w-5 h-5"></i>タスク管理
+                    <button onclick="switchTab('tab-tasks')" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 text-left cursor-pointer" data-tab="tab-tasks">
+                        <i data-lucide="check-square" class="w-4 h-4"></i>タスク管理
                     </button>
-                    <button onclick="switchTab('tab-sales')" class="tab-btn w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 text-left cursor-pointer" data-tab="tab-sales">
-                        <i data-lucide="trending-up" class="w-5 h-5"></i>売上・利益集計
+                    <button onclick="switchTab('tab-schedule')" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 text-left cursor-pointer" data-tab="tab-schedule">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>📅 スケジュール
+                    </button>
+                    <button onclick="switchTab('tab-meetings')" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 text-left cursor-pointer" data-tab="tab-meetings">
+                        <i data-lucide="message-square" class="w-4 h-4"></i>💬 打ち合わせ履歴
+                    </button>
+                    <button onclick="switchTab('tab-inquiries')" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 text-left cursor-pointer" data-tab="tab-inquiries">
+                        <i data-lucide="mail" class="w-4 h-4"></i>📨 問い合わせ管理
+                    </button>
+                    <button onclick="switchTab('tab-files')" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 text-left cursor-pointer" data-tab="tab-files">
+                        <i data-lucide="folder" class="w-4 h-4"></i>📂 ファイル管理
+                    </button>
+                    <button onclick="switchTab('tab-quotes')" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 text-left cursor-pointer" data-tab="tab-quotes">
+                        <i data-lucide="file-text" class="w-4 h-4"></i>🧾 見積書
+                    </button>
+                    <button onclick="switchTab('tab-invoices')" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 text-left cursor-pointer" data-tab="tab-invoices">
+                        <i data-lucide="file-check" class="w-4 h-4"></i>📄 請求書
+                    </button>
+                    <button onclick="switchTab('tab-contracts')" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 text-left cursor-pointer" data-tab="tab-contracts">
+                        <i data-lucide="file-signature" class="w-4 h-4"></i>✍️ 契約書
+                    </button>
+                    <button onclick="switchTab('tab-analytics')" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 text-left cursor-pointer" data-tab="tab-analytics">
+                        <i data-lucide="line-chart" class="w-4 h-4"></i>📈 分析・レポート
+                    </button>
+                    <button onclick="switchTab('tab-sales')" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl text-gray-400 hover:bg-gray-800/50 hover:text-gray-200 text-left cursor-pointer" data-tab="tab-sales">
+                        <i data-lucide="trending-up" class="w-4 h-4"></i>売上・利益集計
                     </button>
                 </nav>
             </div>
@@ -108,7 +130,7 @@
         <!-- メインコンテンツ -->
         <main class="flex-1 p-4 sm:p-6 md:p-10 max-w-7xl w-full overflow-x-hidden">
             
-            <!-- 顧客管理タブ -->
+            <!-- 顧客管理 -->
             <section id="tab-customers" class="tab-content block">
                 <div class="mb-8">
                     <h3 class="text-2xl font-bold">顧客管理</h3>
@@ -154,7 +176,7 @@
                 </div>
             </section>
 
-            <!-- サイト一覧・登録タブ -->
+            <!-- サイト一覧・登録 -->
             <section id="tab-sites" class="tab-content hidden">
                 <div class="mb-8">
                     <h3 class="text-2xl font-bold">サイト一覧・登録</h3>
@@ -195,11 +217,11 @@
                 </div>
             </section>
 
-            <!-- 案件管理・書類出力タブ -->
+            <!-- 案件管理 -->
             <section id="tab-projects" class="tab-content hidden">
                 <div class="mb-8">
-                    <h3 class="text-2xl font-bold">案件管理・書類出力</h3>
-                    <p class="text-xs text-gray-500 mt-1">案件の進捗、原価管理、及び出力日付を指定したPDF書類の発行を行います。</p>
+                    <h3 class="text-2xl font-bold">案件管理</h3>
+                    <p class="text-xs text-gray-500 mt-1">案件の進捗や原価管理を行います。</p>
                 </div>
                 <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 mb-8">
                     <h4 class="text-sm font-bold text-amber-400 mb-4 flex items-center gap-2"><i data-lucide="plus-circle" class="w-4 h-4"></i>新規案件情報入力</h4>
@@ -213,11 +235,11 @@
                             <input type="text" id="proj-name" required class="w-full px-3 py-2 bg-gray-950 border border-gray-800 rounded-lg text-sm focus:outline-none focus:border-amber-500/50">
                         </div>
                         <div>
-                            <label class="block text-xs text-gray-400 mb-1">契約金額（税抜・半角数字） <span class="text-red-400">*</span></label>
+                            <label class="block text-xs text-gray-400 mb-1">契約金額（税抜） <span class="text-red-400">*</span></label>
                             <input type="number" id="proj-amount" required class="w-full px-3 py-2 bg-gray-950 border border-gray-800 rounded-lg text-sm focus:outline-none focus:border-amber-500/50" placeholder="500000">
                         </div>
                         <div>
-                            <label class="block text-xs text-gray-400 mb-1">原価・外注費（税抜・半角数字）</label>
+                            <label class="block text-xs text-gray-400 mb-1">原価・外注費（税抜）</label>
                             <input type="number" id="proj-cost" class="w-full px-3 py-2 bg-gray-950 border border-gray-800 rounded-lg text-sm focus:outline-none focus:border-amber-500/50" placeholder="150000">
                         </div>
                         <div>
@@ -246,7 +268,6 @@
                                 <th class="p-4 whitespace-nowrap">売上 / 原価</th>
                                 <th class="p-4 whitespace-nowrap">契約日</th>
                                 <th class="p-4 whitespace-nowrap">状態</th>
-                                <th class="p-4 text-center w-80 whitespace-nowrap">書類用日付・PDF出力</th>
                                 <th class="p-4 text-center w-16 whitespace-nowrap">操作</th>
                             </tr>
                         </thead>
@@ -255,11 +276,11 @@
                 </div>
             </section>
 
-            <!-- タスク管理タブ -->
+            <!-- タスク管理 -->
             <section id="tab-tasks" class="tab-content hidden">
                 <div class="mb-8">
                     <h3 class="text-2xl font-bold">タスク管理</h3>
-                    <p class="text-xs text-gray-500 mt-1">受注タスクの納期や受注価格をカレンダーで紐付け、個別のTodoとして処理・記録します。</p>
+                    <p class="text-xs text-gray-500 mt-1">受注タスクの納期や個別ToDoの処理・記録を行います。</p>
                 </div>
                 <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 mb-8">
                     <h4 class="text-sm font-bold text-amber-400 mb-4 flex items-center gap-2"><i data-lucide="plus-circle" class="w-4 h-4"></i>新規タスク追加</h4>
@@ -301,7 +322,153 @@
                 </div>
             </section>
 
-            <!-- 売上集計タブ -->
+            <!-- 📅 スケジュール -->
+            <section id="tab-schedule" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold">📅 スケジュール管理</h3>
+                    <p class="text-xs text-gray-500 mt-1">会議や締め切り、イベントの予定を管理します。</p>
+                </div>
+                <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 mb-8">
+                    <h4 class="text-sm font-bold text-amber-400 mb-4 flex items-center gap-2"><i data-lucide="plus-circle" class="w-4 h-4"></i>予定の追加</h4>
+                    <form class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs text-gray-400 mb-1">タイトル</label>
+                            <input type="text" class="w-full px-3 py-2 bg-gray-950 border border-gray-800 rounded-lg text-sm focus:outline-none focus:border-amber-500/50">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-400 mb-1">日時</label>
+                            <input type="datetime-local" class="w-full px-3 py-2 bg-gray-950 border border-gray-800 rounded-lg text-sm focus:outline-none focus:border-amber-500/50">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-400 mb-1">担当者</label>
+                            <input type="text" class="w-full px-3 py-2 bg-gray-950 border border-gray-800 rounded-lg text-sm focus:outline-none focus:border-amber-500/50">
+                        </div>
+                        <div class="md:col-span-3 text-right">
+                            <button type="button" class="px-5 py-2 bg-amber-500 text-gray-950 text-xs font-bold rounded-lg hover:bg-amber-400 transition">予定を保存</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 💬 打ち合わせ履歴 -->
+            <section id="tab-meetings" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold">💬 打ち合わせ履歴</h3>
+                    <p class="text-xs text-gray-500 mt-1">クライアントとの商談や議事録を記録します。</p>
+                </div>
+                <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 mb-8">
+                    <h4 class="text-sm font-bold text-amber-400 mb-4 flex items-center gap-2"><i data-lucide="plus-circle" class="w-4 h-4"></i>議事録の新規作成</h4>
+                    <form class="grid grid-cols-1 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs text-gray-400 mb-1">日時</label>
+                                <input type="date" class="w-full px-3 py-2 bg-gray-950 border border-gray-800 rounded-lg text-sm focus:outline-none focus:border-amber-500/50">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-400 mb-1">参加者</label>
+                                <input type="text" class="w-full px-3 py-2 bg-gray-950 border border-gray-800 rounded-lg text-sm focus:outline-none focus:border-amber-500/50">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-400 mb-1">打ち合わせ内容・メモ</label>
+                            <textarea rows="4" class="w-full px-3 py-2 bg-gray-950 border border-gray-800 rounded-lg text-sm focus:outline-none focus:border-amber-500/50"></textarea>
+                        </div>
+                        <div class="text-right">
+                            <button type="button" class="px-5 py-2 bg-amber-500 text-gray-950 text-xs font-bold rounded-lg hover:bg-amber-400 transition">記録する</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 📨 問い合わせ管理 -->
+            <section id="tab-inquiries" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold">📨 問い合わせ管理</h3>
+                    <p class="text-xs text-gray-500 mt-1">フォーム等からの問い合わせのステータス管理をします。</p>
+                </div>
+                <div class="bg-gray-900 border border-gray-800 rounded-xl overflow-x-auto">
+                    <table class="min-w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-800/40 border-b border-gray-800 text-xs font-bold text-gray-400 uppercase tracking-wider">
+                                <th class="p-4">受付日</th>
+                                <th class="p-4">お名前/企業名</th>
+                                <th class="p-4">件名</th>
+                                <th class="p-4">ステータス</th>
+                                <th class="p-4 text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm divide-y divide-gray-800/60">
+                            <tr><td class="p-4 text-gray-500" colspan="5">問い合わせデータはありません</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 📂 ファイル管理 -->
+            <section id="tab-files" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold">📂 ファイル管理</h3>
+                    <p class="text-xs text-gray-500 mt-1">プロジェクトに関連する各種書類やメディアファイルをアップロード・共有します。</p>
+                </div>
+                <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 text-center border-dashed border-2 border-gray-700 hover:border-amber-500/50 transition">
+                    <i data-lucide="upload-cloud" class="w-10 h-10 text-gray-500 mx-auto mb-2"></i>
+                    <p class="text-sm text-gray-400">ドラッグ＆ドロップ または クリックしてファイルをアップロード</p>
+                    <input type="file" class="hidden" id="file-upload-input">
+                </div>
+            </section>
+
+            <!-- 🧾 見積書 -->
+            <section id="tab-quotes" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold">🧾 見積書発行</h3>
+                    <p class="text-xs text-gray-500 mt-1">見積書の作成とPDF出力を行います。</p>
+                </div>
+                <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+                    <p class="text-sm text-gray-400">見積書一覧・新規発行フォーム</p>
+                </div>
+            </section>
+
+            <!-- 📄 請求書 -->
+            <section id="tab-invoices" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold">📄 請求書管理</h3>
+                    <p class="text-xs text-gray-500 mt-1">納品後の請求書発行・送付ステータス管理。</p>
+                </div>
+                <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+                    <p class="text-sm text-gray-400">請求書一覧・新規作成機能</p>
+                </div>
+            </section>
+
+            <!-- ✍️ 契約書 -->
+            <section id="tab-contracts" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold">✍️ 契約書管理</h3>
+                    <p class="text-xs text-gray-500 mt-1">業務委託契約書や秘密保持契約（NDA）等の管理・保管。</p>
+                </div>
+                <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+                    <p class="text-sm text-gray-400">契約書テンプレート・有効期限管理</p>
+                </div>
+            </section>
+
+            <!-- 📈 分析・レポート -->
+            <section id="tab-analytics" class="tab-content hidden">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold">📈 分析・レポート</h3>
+                    <p class="text-xs text-gray-500 mt-1">顧客別の売上構成比や月次トレンド分析。</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl">
+                        <p class="text-xs font-medium text-gray-400 mb-4">月次推移グラフ</p>
+                        <div class="h-48 flex items-center justify-center text-gray-600 border border-dashed border-gray-800 rounded-lg">Graph Placeholder</div>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 p-6 rounded-xl">
+                        <p class="text-xs font-medium text-gray-400 mb-4">顧客別売上比率</p>
+                        <div class="h-48 flex items-center justify-center text-gray-600 border border-dashed border-gray-800 rounded-lg">Chart Placeholder</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 売上・利益集計 -->
             <section id="tab-sales" class="tab-content hidden">
                 <div class="mb-8">
                     <h3 class="text-2xl font-bold">売上・利益集計ダッシュボード</h3>
@@ -330,7 +497,7 @@
         </main>
     </div>
 
-    <!-- ================= 3. PDF生成用バックグラウンドテンプレート ================= -->
+    <!-- PDFテンプレート -->
     <div style="display: none;">
         <div id="pdf-template" style="width: 595pt; min-height: 842pt; padding: 60pt; background: white; color: black; line-height: 1.6;">
             <div style="text-align: center; margin-bottom: 40px;">
@@ -389,7 +556,6 @@
         </div>
     </div>
 
-    <!-- ================= 4. システムロジック制御 (JavaScript) ================= -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import {
@@ -401,7 +567,6 @@ import {
   doc
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-/* ================= Firebase ================= */
 const firebaseConfig = {
   apiKey: "AIzaSyDFyYKjgwbij8Ru8SzolgpHJNNL7Al_MuY",
   authDomain: "system-a4444.firebaseapp.com",
@@ -414,15 +579,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-/* ================= STATE ================= */
 let customers = [];
 let sites = [];
 let projects = [];
 let tasks = [];
 
-/* ================= LISTEN（重複削除済み） ================= */
 function listenAll() {
-
   onSnapshot(collection(db, "customers"), (snap) => {
     customers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     renderCustomers();
@@ -446,16 +608,13 @@ function listenAll() {
   });
 }
 
-/* ================= LOGIN（元のままパスワード維持） ================= */
 function handleLogin(e){
   e.preventDefault();
-
   const pass = document.getElementById("password-input").value;
 
   if(pass === "Serori12345"){
     document.getElementById("login-page").style.display = "none";
     document.getElementById("dashboard-page").style.display = "flex";
-
     lucide.createIcons();
     listenAll();
   } else {
@@ -468,17 +627,14 @@ function handleLogout(){
   document.getElementById("dashboard-page").style.display = "none";
 }
 
-/* ================= CUSTOMER ================= */
 async function saveCustomer(e){
   e.preventDefault();
-
   await addDoc(collection(db,"customers"),{
     name: document.getElementById("cust-name").value,
     pic: document.getElementById("cust-pic").value,
     email: document.getElementById("cust-email").value,
     address: document.getElementById("cust-address").value
   });
-
   document.getElementById("customer-form").reset();
 }
 
@@ -490,7 +646,7 @@ async function deleteCustomer(id){
 
 function renderCustomers(){
   const tbody = document.getElementById("customer-list-tbody");
-
+  if (!tbody) return;
   tbody.innerHTML = customers.length ? customers.map(c => `
     <tr>
       <td class="p-4">${c.name}</td>
@@ -498,22 +654,19 @@ function renderCustomers(){
       <td class="p-4">${c.email || "-"}</td>
       <td class="p-4">${c.address || "-"}</td>
       <td class="p-4 text-center">
-        <button onclick="deleteCustomer('${c.id}')">削除</button>
+        <button onclick="deleteCustomer('${c.id}')" class="text-red-400 hover:underline text-xs">削除</button>
       </td>
     </tr>
-  `).join("") : `<tr><td class="p-4">データなし</td></tr>`;
+  `).join("") : `<tr><td class="p-4 text-gray-500" colspan="5">データなし</td></tr>`;
 }
 
-/* ================= SITE ================= */
 async function saveSite(e){
   e.preventDefault();
-
   await addDoc(collection(db,"sites"),{
     name: document.getElementById("site-name").value,
     url: document.getElementById("site-url").value,
     customerId: document.getElementById("site-customer-select").value
   });
-
   document.getElementById("site-form").reset();
 }
 
@@ -525,27 +678,24 @@ async function deleteSite(id){
 
 function renderSites(){
   const tbody = document.getElementById("site-list-tbody");
-
+  if (!tbody) return;
   tbody.innerHTML = sites.length ? sites.map(s => {
     const cust = customers.find(c => c.id === s.customerId);
-
     return `
       <tr>
         <td class="p-4">${s.name}</td>
-        <td class="p-4">${s.url}</td>
+        <td class="p-4"><a href="${s.url}" target="_blank" class="text-amber-400 hover:underline">${s.url}</a></td>
         <td class="p-4">${cust ? cust.name : "-"}</td>
-        <td class="p-4">
-          <button onclick="deleteSite('${s.id}')">削除</button>
+        <td class="p-4 text-center">
+          <button onclick="deleteSite('${s.id}')" class="text-red-400 hover:underline text-xs">削除</button>
         </td>
       </tr>
     `;
-  }).join("") : `<tr><td class="p-4">なし</td></tr>`;
+  }).join("") : `<tr><td class="p-4 text-gray-500" colspan="4">なし</td></tr>`;
 }
 
-/* ================= PROJECT ================= */
 async function saveProject(e){
   e.preventDefault();
-
   await addDoc(collection(db,"projects"),{
     customerId: document.getElementById("proj-customer-select").value,
     name: document.getElementById("proj-name").value,
@@ -554,7 +704,6 @@ async function saveProject(e){
     date: document.getElementById("proj-date").value,
     status: document.getElementById("proj-status").value
   });
-
   document.getElementById("project-form").reset();
 }
 
@@ -564,17 +713,14 @@ async function deleteProject(id){
   }
 }
 
-/* ================= TASK ================= */
 async function saveTask(e){
   e.preventDefault();
-
   await addDoc(collection(db,"tasks"),{
     orderDate: document.getElementById("task-order-date").value,
     dueDate: document.getElementById("task-due-date").value,
     amount: Number(document.getElementById("task-amount").value),
     content: document.getElementById("task-content").value
   });
-
   document.getElementById("task-form").reset();
 }
 
@@ -584,38 +730,16 @@ async function deleteTask(id){
   }
 }
 
-/* ================= GLOBAL ================= */
-window.handleLogin = handleLogin;
-window.handleLogout = handleLogout;
-
-window.saveCustomer = saveCustomer;
-window.deleteCustomer = deleteCustomer;
-
-window.saveSite = saveSite;
-window.deleteSite = deleteSite;
-
-window.saveProject = saveProject;
-window.deleteProject = deleteProject;
-
-window.saveTask = saveTask;
-window.deleteTask = deleteTask;
-/* ================= TAB SWITCH ================= */
-
-
-/* ================= MOBILE SIDEBAR ================= */
 function toggleMobileSidebar() {
   const sidebar = document.getElementById("sidebar");
   const backdrop = document.getElementById("sidebar-backdrop");
-
   sidebar.classList.toggle("-translate-x-full");
   backdrop.classList.toggle("hidden");
 }
 
-/* ================= SELECT UPDATE ================= */
 function updateSelectBoxes() {
   const custSelect1 = document.getElementById("site-customer-select");
   const custSelect2 = document.getElementById("proj-customer-select");
-
   if (!custSelect1 || !custSelect2) return;
 
   const options = customers.map(c =>
@@ -626,7 +750,6 @@ function updateSelectBoxes() {
   custSelect2.innerHTML = `<option value="">未選択</option>` + options;
 }
 
-/* ================= PLACEHOLDER RENDER（最低限動作保証） ================= */
 function renderProjects() {
   const tbody = document.getElementById("project-list-tbody");
   if (!tbody) return;
@@ -637,16 +760,15 @@ function renderProjects() {
       <tr>
         <td class="p-4">${cust?.name || "-"}</td>
         <td class="p-4">${p.name}</td>
-        <td class="p-4">¥${p.amount} / ¥${p.cost || 0}</td>
+        <td class="p-4">¥${p.amount.toLocaleString()} / ¥${(p.cost || 0).toLocaleString()}</td>
         <td class="p-4">${p.date || "-"}</td>
         <td class="p-4">${p.status}</td>
-        <td class="p-4 text-center">-</td>
         <td class="p-4 text-center">
-          <button onclick="deleteProject('${p.id}')">削除</button>
+          <button onclick="deleteProject('${p.id}')" class="text-red-400 hover:underline text-xs">削除</button>
         </td>
       </tr>
     `;
-  }).join("") : `<tr><td class="p-4">なし</td></tr>`;
+  }).join("") : `<tr><td class="p-4 text-gray-500" colspan="6">なし</td></tr>`;
 }
 
 function renderTasks() {
@@ -657,13 +779,13 @@ function renderTasks() {
     <tr>
       <td class="p-4">${t.orderDate}</td>
       <td class="p-4">${t.dueDate}</td>
-      <td class="p-4">¥${t.amount || 0}</td>
+      <td class="p-4">¥${(t.amount || 0).toLocaleString()}</td>
       <td class="p-4">${t.content}</td>
       <td class="p-4 text-center">
-        <button onclick="deleteTask('${t.id}')">削除</button>
+        <button onclick="deleteTask('${t.id}')" class="text-red-400 hover:underline text-xs">削除</button>
       </td>
     </tr>
-  `).join("") : `<tr><td class="p-4">なし</td></tr>`;
+  `).join("") : `<tr><td class="p-4 text-gray-500" colspan="5">なし</td></tr>`;
 }
 
 function renderSales() {
@@ -677,27 +799,23 @@ function renderSales() {
   const total = projects.reduce((a, b) => a + (b.amount || 0), 0);
   const cost = projects.reduce((a, b) => a + (b.cost || 0), 0);
 
-  month.textContent = `¥${total}`;
-  year.textContent = `¥${total}`;
-  profit.textContent = `¥${total - cost}`;
-  avg.textContent = `¥${projects.length ? Math.round(total / projects.length) : 0}`;
+  month.textContent = `¥${total.toLocaleString()}`;
+  year.textContent = `¥${total.toLocaleString()}`;
+  profit.textContent = `¥${(total - cost).toLocaleString()}`;
+  avg.textContent = `¥${projects.length ? Math.round(total / projects.length).toLocaleString() : 0}`;
 }
-window.switchTab = switchTab;
-window.toggleMobileSidebar = toggleMobileSidebar;
-window.saveCustomer = saveCustomer;
-window.deleteCustomer = deleteCustomer;
-window.saveSite = saveSite;
-window.deleteSite = deleteSite;
-window.saveProject = saveProject;
-window.deleteProject = deleteProject;
-window.saveTask = saveTask;
-window.deleteTask = deleteTask;
+
 function switchTab(tabId) {
   document.querySelectorAll('.tab-content').forEach(el => {
     el.classList.add('hidden');
+    el.classList.remove('block');
   });
 
-  document.getElementById(tabId).classList.remove('hidden');
+  const target = document.getElementById(tabId);
+  if (target) {
+    target.classList.remove('hidden');
+    target.classList.add('block');
+  }
 
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.classList.remove('text-amber-400', 'bg-amber-500/10', 'border-amber-500/20');
@@ -712,6 +830,19 @@ function switchTab(tabId) {
 
   lucide.createIcons();
 }
+
+window.handleLogin = handleLogin;
+window.handleLogout = handleLogout;
+window.saveCustomer = saveCustomer;
+window.deleteCustomer = deleteCustomer;
+window.saveSite = saveSite;
+window.deleteSite = deleteSite;
+window.saveProject = saveProject;
+window.deleteProject = deleteProject;
+window.saveTask = saveTask;
+window.deleteTask = deleteTask;
+window.switchTab = switchTab;
+window.toggleMobileSidebar = toggleMobileSidebar;
 </script>
 </body>
 </html>
