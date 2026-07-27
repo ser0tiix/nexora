@@ -15,6 +15,11 @@
         *, *::before, *::after, input, select, textarea, button {
             font-family: 'Noto Serif JP', serif !important;
         }
+        /* iOS等での日付フォームの横幅はみ出し（黒い枠の伸び）を修正 */
+        input[type="date"], input[type="month"] {
+            -webkit-appearance: none;
+            appearance: none;
+        }
 
         @media print {
             body { background: white; color: black; }
