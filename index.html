@@ -15,10 +15,26 @@
         *, *::before, *::after, input, select, textarea, button {
             font-family: 'Noto Serif JP', serif !important;
         }
-        /* iOS等での日付フォームの横幅はみ出し（黒い枠の伸び）を修正 */
+/* iOS等での日付フォームの見た目を整える */
         input[type="date"], input[type="month"] {
             -webkit-appearance: none;
             appearance: none;
+            min-width: 150px; /* 横幅が細くなりすぎないように最小幅を指定 */
+            padding: 0.5rem;   /* 上下の余白を持たせて見栄えを良くする */
+            box-sizing: border-box;
+        }
+        @media print {
+            /* 印刷・PDF化のときに要素がはみ出さないように収める */
+            body {
+                width: 100%;
+                max-width: 100% !important;
+            }
+            .container, .max-w-4xl, .max-w-3xl {
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
         }
 
         @media print {
