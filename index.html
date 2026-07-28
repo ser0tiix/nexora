@@ -15,16 +15,15 @@
         *, *::before, *::after, input, select, textarea, button {
             font-family: 'Noto Serif JP', serif !important;
         }
-/* iOS等での日付フォームの見た目を整える */
+        /* iOS等での日付フォームの見た目を整える */
         input[type="date"], input[type="month"] {
             -webkit-appearance: none;
             appearance: none;
-            min-width: 150px; /* 横幅が細くなりすぎないように最小幅を指定 */
-            padding: 1rem;   /* 上下の余白を持たせて見栄えを良くする */
+            min-width: 150px;
+            padding: 1rem;
             box-sizing: border-box;
         }
         @media print {
-            /* 印刷・PDF化のときに要素がはみ出さないように収める */
             body {
                 width: 100%;
                 max-width: 100% !important;
@@ -35,9 +34,6 @@
                 margin: 0 !important;
                 padding: 0 !important;
             }
-        }
-
-        @media print {
             body { background: white; color: black; }
             .no-print { display: none; }
         }
@@ -193,7 +189,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- 左カラム: フォーム -->
                     <div class="lg:col-span-4 bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
                         <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-5 flex items-center gap-2 pb-3 border-b border-zinc-800/60">
                             <i data-lucide="plus-circle" class="w-4 h-4 text-zinc-400"></i>新規顧客登録
@@ -201,19 +196,19 @@
                         <form id="customer-form" class="space-y-4">
                             <div>
                                 <label class="block text-xs text-zinc-400 mb-1.5 font-medium">企業名・サイト名 <span class="text-rose-500">*</span></label>
-                                <input type="text" id="cust-name" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                                <input type="text" id="cust-name" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                             </div>
                             <div>
                                 <label class="block text-xs text-zinc-400 mb-1.5 font-medium">担当者名</label>
-                                <input type="text" id="cust-pic" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                                <input type="text" id="cust-pic" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                             </div>
                             <div>
                                 <label class="block text-xs text-zinc-400 mb-1.5 font-medium">メールアドレス</label>
-                                <input type="email" id="cust-email" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                                <input type="email" id="cust-email" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                             </div>
                             <div>
                                 <label class="block text-xs text-zinc-400 mb-1.5 font-medium">所在地</label>
-                                <input type="text" id="cust-address" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                                <input type="text" id="cust-address" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                             </div>
                             <button type="submit" class="w-full py-3 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer rounded-xl shadow-md mt-2">
                                 顧客を登録する
@@ -221,7 +216,6 @@
                         </form>
                     </div>
 
-                    <!-- 右カラム: 一覧テーブル -->
                     <div class="lg:col-span-8 bg-zinc-900 border border-zinc-800/80 rounded-2xl overflow-hidden shadow-xl">
                         <div class="p-4 border-b border-zinc-800/80 bg-zinc-950/40 flex items-center justify-between">
                             <span class="text-xs font-bold text-zinc-400 tracking-wider uppercase">登録済み顧客一覧</span>
@@ -252,7 +246,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- 左カラム: フォーム -->
                     <div class="lg:col-span-4 bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
                         <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-5 flex items-center gap-2 pb-3 border-b border-zinc-800/60">
                             <i data-lucide="plus-circle" class="w-4 h-4 text-zinc-400"></i>新規サイト登録
@@ -260,15 +253,15 @@
                         <form id="site-form" class="space-y-4">
                             <div>
                                 <label class="block text-xs text-zinc-400 mb-1.5 font-medium">サイト名・メディア名 <span class="text-rose-500">*</span></label>
-                                <input type="text" id="site-name" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                                <input type="text" id="site-name" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                             </div>
                             <div>
                                 <label class="block text-xs text-zinc-400 mb-1.5 font-medium">URL <span class="text-rose-500">*</span></label>
-                                <input type="url" id="site-url" required placeholder="https://" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                                <input type="url" id="site-url" required placeholder="https://" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                             </div>
                             <div>
                                 <label class="block text-xs text-zinc-400 mb-1.5 font-medium">紐付ける顧客（任意）</label>
-                                <select id="site-customer-select" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition"></select>
+                                <select id="site-customer-select" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition"></select>
                             </div>
                             <button type="submit" class="w-full py-3 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer rounded-xl shadow-md mt-2">
                                 サイトを登録する
@@ -276,7 +269,6 @@
                         </form>
                     </div>
 
-                    <!-- 右カラム: 一覧テーブル -->
                     <div class="lg:col-span-8 bg-zinc-900 border border-zinc-800/80 rounded-2xl overflow-hidden shadow-xl">
                         <div class="p-4 border-b border-zinc-800/80 bg-zinc-950/40 flex items-center justify-between">
                             <span class="text-xs font-bold text-zinc-400 tracking-wider uppercase">登録済みサイト一覧</span>
@@ -312,15 +304,15 @@
                     <form id="project-form" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                         <div>
                             <label class="block text-xs text-zinc-400 mb-1.5 font-medium">対象顧客 <span class="text-rose-500">*</span></label>
-                            <select id="proj-customer-select" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition"></select>
+                            <select id="proj-customer-select" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition"></select>
                         </div>
                         <div>
                             <label class="block text-xs text-zinc-400 mb-1.5 font-medium">案件名 <span class="text-rose-500">*</span></label>
-                            <input type="text" id="proj-name" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                            <input type="text" id="proj-name" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                         </div>
                         <div>
                             <label class="block text-xs text-zinc-400 mb-1.5 font-medium">サービス区分 <span class="text-rose-500">*</span></label>
-                            <select id="proj-service" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                            <select id="proj-service" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                                 <option value="Web制作">Web制作</option>
                                 <option value="システム開発">システム開発</option>
                                 <option value="マーケティング・SEO">マーケティング・SEO</option>
@@ -330,23 +322,23 @@
                         </div>
                         <div>
                             <label class="block text-xs text-zinc-400 mb-1.5 font-medium">契約金額（税抜） <span class="text-rose-500">*</span></label>
-                            <input type="number" id="proj-amount" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="500000">
+                            <input type="number" id="proj-amount" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="500000">
                         </div>
                         <div>
                             <label class="block text-xs text-zinc-400 mb-1.5 font-medium">原価・外注費（税抜）</label>
-                            <input type="number" id="proj-cost" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="150000">
+                            <input type="number" id="proj-cost" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="150000">
                         </div>
                         <div>
                             <label class="block text-xs text-zinc-400 mb-1.5 font-medium">契約日 <span class="text-rose-500">*</span></label>
-                            <input type="date" id="proj-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                            <input type="date" id="proj-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                         </div>
                         <div>
                             <label class="block text-xs text-zinc-400 mb-1.5 font-medium">完了日（制作日数計算用）</label>
-                            <input type="date" id="proj-end-date" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                            <input type="date" id="proj-end-date" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                         </div>
                         <div>
                             <label class="block text-xs text-zinc-400 mb-1.5 font-medium">ステータス</label>
-                            <select id="proj-status" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                            <select id="proj-status" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                                 <option value="進行中">進行中</option>
                                 <option value="完了">完了</option>
                                 <option value="失注">失注</option>
@@ -355,7 +347,7 @@
                         </div>
                         <div>
                             <label class="block text-xs text-zinc-400 mb-1.5 font-medium">入金状況</label>
-                            <select id="proj-payment" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                            <select id="proj-payment" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                                 <option value="入金済">入金済</option>
                                 <option value="未入金">未入金</option>
                             </select>
@@ -398,7 +390,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- 左カラム: フォーム -->
                     <div class="lg:col-span-5 bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
                         <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-5 flex items-center gap-2 pb-3 border-b border-zinc-800/60">
                             <i data-lucide="plus-circle" class="w-4 h-4 text-zinc-400"></i>新規タスク追加
@@ -407,20 +398,20 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-xs text-zinc-400 mb-1.5 font-medium">受注日 <span class="text-rose-500">*</span></label>
-                                    <input type="date" id="task-order-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                                    <input type="date" id="task-order-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                                 </div>
                                 <div>
-                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">期限（デッドライン） <span class="text-rose-500">*</span></label>
-                                    <input type="date" id="task-due-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">期限 <span class="text-rose-500">*</span></label>
+                                    <input type="date" id="task-due-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                                 </div>
                             </div>
                             <div>
-                                <label class="block text-xs text-zinc-400 mb-1.5 font-medium">金額（半角数字）</label>
-                                <input type="number" id="task-amount" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="50000">
+                                <label class="block text-xs text-zinc-400 mb-1.5 font-medium">金額</label>
+                                <input type="number" id="task-amount" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="50000">
                             </div>
                             <div>
                                 <label class="block text-xs text-zinc-400 mb-1.5 font-medium">タスク内容・詳細 <span class="text-rose-500">*</span></label>
-                                <textarea id="task-content" required rows="4" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="依頼内容や作業詳細を入力してください"></textarea>
+                                <textarea id="task-content" required rows="4" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="作業詳細"></textarea>
                             </div>
                             <button type="submit" class="w-full py-3 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer rounded-xl shadow-md mt-2">
                                 タスクを登録する
@@ -428,7 +419,6 @@
                         </form>
                     </div>
 
-                    <!-- 右カラム: 一覧テーブル -->
                     <div class="lg:col-span-7 bg-zinc-900 border border-zinc-800/80 rounded-2xl overflow-hidden shadow-xl">
                         <div class="p-4 border-b border-zinc-800/80 bg-zinc-950/40 flex items-center justify-between">
                             <span class="text-xs font-bold text-zinc-400 tracking-wider uppercase">タスク一覧</span>
@@ -459,7 +449,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <!-- 左側: カレンダー表示 -->
                     <div class="lg:col-span-2 bg-zinc-900 border border-zinc-800/80 p-4 sm:p-6 rounded-2xl shadow-xl overflow-x-auto">
                         <div class="flex items-center justify-between mb-6 pb-4 border-b border-zinc-800 min-w-[280px]">
                             <div class="flex items-center gap-3">
@@ -476,16 +465,13 @@
                             </div>
                         </div>
 
-                        <!-- 曜日ヘッダー -->
                         <div class="grid grid-cols-7 text-center text-[10px] font-bold text-zinc-500 tracking-widest uppercase mb-2 min-w-[280px]">
                             <div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div>
                         </div>
 
-                        <!-- 日付グリッド -->
                         <div id="calendar-grid" class="grid grid-cols-7 gap-1 sm:gap-1.5 text-xs min-w-[280px]"></div>
                     </div>
 
-                    <!-- 右側: 予定追加フォーム & 当日予定一覧 -->
                     <div class="space-y-6">
                         <div class="bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
                             <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-4 flex items-center gap-2 pb-3 border-b border-zinc-800/60">
@@ -494,15 +480,15 @@
                             <form id="schedule-form" class="space-y-4">
                                 <div>
                                     <label class="block text-xs text-zinc-400 mb-1.5 font-medium">件名・内容 <span class="text-rose-500">*</span></label>
-                                    <input type="text" id="sched-title" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                                    <input type="text" id="sched-title" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                                 </div>
                                 <div>
                                     <label class="block text-xs text-zinc-400 mb-1.5 font-medium">日付 <span class="text-rose-500">*</span></label>
-                                    <input type="date" id="sched-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                                    <input type="date" id="sched-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                                 </div>
                                 <div>
                                     <label class="block text-xs text-zinc-400 mb-1.5 font-medium">担当者</label>
-                                    <input type="text" id="sched-pic" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="例: 山田">
+                                    <input type="text" id="sched-pic" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="例: 山田">
                                 </div>
                                 <button type="submit" class="w-full py-3 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer rounded-xl shadow-md mt-2">
                                     予定を保存する
@@ -528,7 +514,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- 左カラム: フォーム -->
                     <div class="lg:col-span-5 bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
                         <h4 class="text-xs font-bold text-zinc-300 tracking-wider uppercase mb-5 flex items-center gap-2 pb-3 border-b border-zinc-800/60">
                             <i data-lucide="plus-circle" class="w-4 h-4 text-zinc-400"></i>議事録の新規作成
@@ -536,21 +521,21 @@
                         <form id="meeting-form" class="space-y-4">
                             <div>
                                 <label class="block text-xs text-zinc-400 mb-1.5 font-medium">対象顧客（企業） <span class="text-rose-500">*</span></label>
-                                <select id="meeting-customer-select" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition"></select>
+                                <select id="meeting-customer-select" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition"></select>
                             </div>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-xs text-zinc-400 mb-1.5 font-medium">日時 <span class="text-rose-500">*</span></label>
-                                    <input type="date" id="meeting-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition">
+                                    <input type="date" id="meeting-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                                 </div>
                                 <div>
                                     <label class="block text-xs text-zinc-400 mb-1.5 font-medium">参加者</label>
-                                    <input type="text" id="meeting-members" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="山田・佐藤">
+                                    <input type="text" id="meeting-members" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="山田・佐藤">
                                 </div>
                             </div>
                             <div>
                                 <label class="block text-xs text-zinc-400 mb-1.5 font-medium">打ち合わせ内容・メモ <span class="text-rose-500">*</span></label>
-                                <textarea id="meeting-content" required rows="5" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 rounded-xl transition" placeholder="決定事項や次回タスク等"></textarea>
+                                <textarea id="meeting-content" required rows="5" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="決定事項等"></textarea>
                             </div>
                             <button type="submit" class="w-full py-3 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer rounded-xl shadow-md mt-2">
                                 記録する
@@ -558,7 +543,6 @@
                         </form>
                     </div>
 
-                    <!-- 右カラム: 一覧テーブル -->
                     <div class="lg:col-span-7 bg-zinc-900 border border-zinc-800/80 rounded-2xl overflow-hidden shadow-xl">
                         <div class="p-4 border-b border-zinc-800/80 bg-zinc-950/40 flex items-center justify-between">
                             <span class="text-xs font-bold text-zinc-400 tracking-wider uppercase">打ち合わせ履歴一覧</span>
@@ -615,15 +599,13 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- 左カラム: アップロードエリア -->
                     <div id="file-drop-area" class="lg:col-span-4 bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-dashed border-zinc-700/80 hover:border-zinc-400 transition cursor-pointer p-8 rounded-2xl shadow-xl text-center">
                         <i data-lucide="upload-cloud" class="w-10 h-10 text-zinc-400 mx-auto mb-3"></i>
                         <p class="text-xs text-zinc-200 font-bold tracking-wider">ファイルを選択して追加</p>
-                        <p class="text-[10px] text-zinc-500 mt-1.5">画像、PDF、テキスト、ドキュメントなど</p>
-                        <input type="file" class="hidden" id="file-upload-input">
+                        <p class="text-[10px] text-zinc-500 mt-1.5">画像、PDF、テキストなど</p>
+                        <input type="file" class="hidden" id="file-upload-input" multiple>
                     </div>
 
-                    <!-- 右カラム: 一覧テーブル -->
                     <div class="lg:col-span-8 bg-zinc-900 border border-zinc-800/80 rounded-2xl overflow-hidden shadow-xl">
                         <div class="p-4 border-b border-zinc-800/80 bg-zinc-950/40 flex items-center justify-between">
                             <span class="text-xs font-bold text-zinc-400 tracking-wider uppercase">保管ファイル一覧</span>
@@ -653,16 +635,15 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- 左カラム: 入力フォーム -->
                     <div class="lg:col-span-6 bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
                         <form id="quote-form" class="space-y-5">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div class="sm:col-span-2">
                                     <label class="block text-xs text-zinc-400 mb-1.5 font-medium">件名 <span class="text-rose-500">*</span></label>
-                                    <input type="text" id="quote-title" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="">
+                                    <input type="text" id="quote-title" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                                 </div>
                                 <div>
-                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">宛名（企業名・お客様名） <span class="text-rose-500">*</span></label>
+                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">宛名 <span class="text-rose-500">*</span></label>
                                     <input type="text" id="quote-client" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="株式会社〇〇 御中">
                                 </div>
                                 <div>
@@ -679,7 +660,6 @@
                                 </div>
                             </div>
 
-                            <!-- 明細追加エリア -->
                             <div>
                                 <div class="flex justify-between items-center mb-3">
                                     <label class="block text-xs text-zinc-300 font-bold tracking-wider">見積明細項目</label>
@@ -687,14 +667,12 @@
                                         <i data-lucide="plus" class="w-3.5 h-3.5"></i> 明細行を追加
                                     </button>
                                 </div>
-                                <div id="quote-items-container" class="space-y-3">
-                                    <!-- JSで動的生成される行 -->
-                                </div>
+                                <div id="quote-items-container" class="space-y-3"></div>
                             </div>
 
                             <div>
                                 <label class="block text-xs text-zinc-400 mb-1.5 font-medium">備考・お振込先情報</label>
-                                <textarea id="quote-notes" rows="3" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder=""></textarea>
+                                <textarea id="quote-notes" rows="3" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition"></textarea>
                             </div>
 
                             <button type="submit" class="w-full py-3.5 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl shadow-md">
@@ -703,7 +681,6 @@
                         </form>
                     </div>
 
-                    <!-- 右カラム: リアルタイムプレビュー -->
                     <div class="lg:col-span-6 sticky top-6">
                         <div class="bg-zinc-900 border border-zinc-800/80 p-4 rounded-2xl shadow-xl">
                             <label class="block text-xs font-bold text-zinc-400 mb-3 tracking-wider uppercase flex items-center gap-2">
@@ -725,16 +702,15 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- 左カラム: 入力フォーム -->
                     <div class="lg:col-span-6 bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
                         <form id="inv-form" class="space-y-5">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div class="sm:col-span-2">
                                     <label class="block text-xs text-zinc-400 mb-1.5 font-medium">件名 <span class="text-rose-500">*</span></label>
-                                    <input type="text" id="inv-title" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="">
+                                    <input type="text" id="inv-title" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                                 </div>
                                 <div>
-                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">請求先（企業名・御中） <span class="text-rose-500">*</span></label>
+                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">請求先 <span class="text-rose-500">*</span></label>
                                     <input type="text" id="inv-client" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="株式会社〇〇 御中">
                                 </div>
                                 <div>
@@ -751,7 +727,6 @@
                                 </div>
                             </div>
 
-                            <!-- 明細追加エリア -->
                             <div>
                                 <div class="flex justify-between items-center mb-3">
                                     <label class="block text-xs text-zinc-300 font-bold tracking-wider">請求明細項目</label>
@@ -759,14 +734,12 @@
                                         <i data-lucide="plus" class="w-3.5 h-3.5"></i> 明細行を追加
                                     </button>
                                 </div>
-                                <div id="inv-items-container" class="space-y-3">
-                                    <!-- JSで動的生成される行 -->
-                                </div>
+                                <div id="inv-items-container" class="space-y-3"></div>
                             </div>
 
                             <div>
                                 <label class="block text-xs text-zinc-400 mb-1.5 font-medium">振込先口座・特記事項</label>
-                                <textarea id="inv-notes" rows="3" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="振込先金融機関、口座番号、手数料のご負担に関する特記事項.etc"></textarea>
+                                <textarea id="inv-notes" rows="3" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition"></textarea>
                             </div>
 
                             <button type="submit" class="w-full py-3.5 bg-zinc-100 text-zinc-950 text-xs font-bold hover:bg-zinc-300 transition cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl shadow-md">
@@ -775,7 +748,6 @@
                         </form>
                     </div>
 
-                    <!-- 右カラム: リアルタイムプレビュー -->
                     <div class="lg:col-span-6 sticky top-6">
                         <div class="bg-zinc-900 border border-zinc-800/80 p-4 rounded-2xl shadow-xl">
                             <label class="block text-xs font-bold text-zinc-400 mb-3 tracking-wider uppercase flex items-center gap-2">
@@ -797,7 +769,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- 左カラム: 詳細入力フォーム -->
                     <div class="lg:col-span-6 bg-gradient-to-b from-zinc-900 to-zinc-900/80 border border-zinc-800/80 p-6 rounded-2xl shadow-xl">
                         <form id="contract-form" class="space-y-4">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -814,32 +785,24 @@
                                     <input type="date" id="con-date" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                                 </div>
                                 <div>
-                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">契約期間・履行期限</label>
+                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">契約期間</label>
                                     <input type="text" id="con-period" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="2026年12月31日まで">
                                 </div>
                                 <div class="sm:col-span-2">
                                     <label class="block text-xs text-zinc-400 mb-1.5 font-medium">委託業務件名 <span class="text-rose-500">*</span></label>
-                                    <input type="text" id="con-title" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="">
+                                    <input type="text" id="con-title" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition">
                                 </div>
                                 <div class="sm:col-span-2">
                                     <label class="block text-xs text-zinc-400 mb-1.5 font-medium">委託業務の詳細内容</label>
-                                    <textarea id="con-scope" rows="2" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="フロントエンド実装、API連携、レスポンシブ対応、検収対応など"></textarea>
+                                    <textarea id="con-scope" rows="2" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="実装、API連携など"></textarea>
                                 </div>
                                 <div>
-                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">契約金額・報酬（税抜） <span class="text-rose-500">*</span></label>
+                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">契約金額（税抜） <span class="text-rose-500">*</span></label>
                                     <input type="number" id="con-amount" required class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="500000">
                                 </div>
                                 <div>
-                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">着手金 / 中間金（任意）</label>
-                                    <input type="text" id="con-payment-terms" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="契約時50%、納品完了時50%">
-                                </div>
-                                <div class="sm:col-span-2">
-                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">成果物の権利・著作権帰属</label>
-                                    <input type="text" id="con-rights" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" value="対価の全額支払完了をもって、成果物の著作権は甲に移転する。">
-                                </div>
-                                <div class="sm:col-span-2">
-                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">特記事項・個別追加条項</label>
-                                    <textarea id="con-terms" rows="3" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="【秘密保持】業務上知り得た情報の第三者開示禁止&#10;【遅延損害金】支払遅延時は年14.6%の割合による遅延損害金を加算"></textarea>
+                                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">支払条件</label>
+                                    <input type="text" id="con-payment-terms" class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800/80 text-sm focus:outline-none focus:border-zinc-500 rounded-xl transition" placeholder="納品完了時一括">
                                 </div>
                             </div>
 
@@ -849,7 +812,6 @@
                         </form>
                     </div>
 
-                    <!-- 右カラム: リアルタイムプレビュー -->
                     <div class="lg:col-span-6 sticky top-6">
                         <div class="bg-zinc-900 border border-zinc-800/80 p-4 rounded-2xl shadow-xl">
                             <label class="block text-xs font-bold text-zinc-400 mb-3 tracking-wider uppercase flex items-center gap-2">
@@ -958,58 +920,7 @@
                     </div>
                 </div>
             </section>
-
         </main>
-    </div>
-
-    <!-- PDF出力用テンプレート (印刷およびリアルタイムプレビュー用) -->
-    <div style="display: none;">
-        <div id="pdf-template" style="width: 595pt; min-height: 842pt; padding: 40pt; background: white; color: black; line-height: 1.6; font-size: 11px;">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <h1 id="pdf-title" style="font-size: 20px; font-weight: 700; letter-spacing: 6px; border-bottom: 2px solid #000; padding-bottom: 6px; display: inline-block; width: 100%; text-transform: uppercase;">見積書</h1>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                <div style="width: 55%;">
-                    <p style="font-size: 15px; font-weight: bold; border-bottom: 1px solid #000; padding-bottom: 4px; margin-bottom: 6px;" id="pdf-client-name">◯◯ 御中</p>
-                    <p id="pdf-subject" style="font-size: 11px; font-weight: bold; color: #111; margin-bottom: 4px;">件名: </p>
-                    <p id="pdf-message" style="font-size: 10px; color: #333;">下記の通り申し受けます。</p>
-                </div>
-                <div style="text-align: right; width: 40%;">
-                    <p style="font-weight: bold; font-size: 13px; margin-bottom: 2px;" id="pdf-issuer-name">NEXORA GROUP</p>
-                    <p style="font-size: 9px; color: #333; margin: 0;">〒100-0005 東京都千代田区丸の内</p>
-                    <p style="font-size: 9px; color: #333; margin: 0;">wgroup.nexora@gmail.com</p>
-                    <p style="font-size: 10px; font-weight: bold; color: #000; margin-top: 6px;" id="pdf-issue-date">日付：2026年--月--日</p>
-                    <p style="font-size: 9px; color: #444;" id="pdf-extra-date"></p>
-                </div>
-            </div>
-
-            <!-- 見積・請求書 合計枠 -->
-            <div id="pdf-total-box" style="background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #000; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-size: 11px; font-weight: bold;" id="pdf-amount-label">合計金額（税込）</span>
-                <span style="font-size: 18px; font-weight: bold;" id="pdf-total-amount">¥0-</span>
-            </div>
-
-            <!-- 動的明細テーブル -->
-            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-                <thead>
-                    <tr style="background: #18181b; color: white;">
-                        <th style="padding: 6px 8px; text-align: left; border: 1px solid #18181b; font-size: 10px;" id="pdf-th-1">品名 / 業務項目</th>
-                        <th style="padding: 6px 8px; text-align: right; border: 1px solid #18181b; width: 80px; font-size: 10px;" id="pdf-th-2">単価 (税抜)</th>
-                        <th style="padding: 6px 8px; text-align: right; border: 1px solid #18181b; width: 50px; font-size: 10px;" id="pdf-th-3">数量</th>
-                        <th style="padding: 6px 8px; text-align: right; border: 1px solid #18181b; width: 90px; font-size: 10px;" id="pdf-th-4">金額 (税抜)</th>
-                    </tr>
-                </thead>
-                <tbody id="pdf-tbody">
-                    <!-- JSで動的に追加されます -->
-                </tbody>
-            </table>
-
-            <div style="font-size: 9px; color: #444; border-top: 1px solid #eee; padding-top: 10px; margin-top: 20px;">
-                <p style="font-weight: bold; margin-bottom: 2px;">【備考・お振込先】</p>
-                <p id="pdf-notes" style="margin: 0; white-space: pre-wrap;">ネクソラ銀行 本店営業部 普通口座：1234567 / 口座名義：ネクソラグループ</p>
-            </div>
-        </div>
     </div>
 
 <script type="module">
@@ -1042,8 +953,39 @@ let tasks = [];
 let meetings = [];
 let schedules = [];
 let localFiles = [];
-
 let currentCalDate = new Date();
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("login-form").addEventListener("submit", handleLogin);
+    document.getElementById("logout-btn").addEventListener("click", handleLogout);
+    document.getElementById("mobile-menu-toggle").addEventListener("click", toggleMobileSidebar);
+    document.getElementById("mobile-menu-close").addEventListener("click", toggleMobileSidebar);
+    document.getElementById("sidebar-backdrop").addEventListener("click", toggleMobileSidebar);
+
+    document.getElementById("customer-form").addEventListener("submit", saveCustomer);
+    document.getElementById("site-form").addEventListener("submit", saveSite);
+    document.getElementById("project-form").addEventListener("submit", saveProject);
+    document.getElementById("task-form").addEventListener("submit", saveTask);
+    document.getElementById("meeting-form").addEventListener("submit", saveMeeting);
+    document.getElementById("schedule-form").addEventListener("submit", saveScheduleEvent);
+
+    document.getElementById("quote-add-item-btn").addEventListener("click", () => addDocItemRow('quote-items-container'));
+    document.getElementById("inv-add-item-btn").addEventListener("click", () => addDocItemRow('inv-items-container'));
+
+    document.getElementById("cal-prev-btn").addEventListener("click", () => changeCalendarMonth(-1));
+    document.getElementById("cal-next-btn").addEventListener("click", () => changeCalendarMonth(1));
+    document.getElementById("calendar-month-picker").addEventListener("change", (e) => jumpToMonth(e.target.value));
+    document.getElementById("monthly-target-input").addEventListener("input", renderSales);
+
+    document.getElementById("quote-form").addEventListener("submit", (e) => { e.preventDefault(); generatePDF('quote'); });
+    document.getElementById("inv-form").addEventListener("submit", (e) => { e.preventDefault(); generatePDF('invoice'); });
+    document.getElementById("contract-form").addEventListener("submit", (e) => { e.preventDefault(); generatePDF('contract'); });
+
+    const fileDropArea = document.getElementById("file-drop-area");
+    const fileUploadInput = document.getElementById("file-upload-input");
+    fileDropArea.addEventListener("click", () => fileUploadInput.click());
+    fileUploadInput.addEventListener("change", handleFileUpload);
+});
 
 function listenAll() {
   onSnapshot(collection(db, "customers"), (snap) => {
@@ -1051,28 +993,23 @@ function listenAll() {
     renderCustomers();
     updateSelectBoxes();
   });
-
   onSnapshot(collection(db, "sites"), (snap) => {
     sites = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     renderSites();
   });
-
   onSnapshot(collection(db, "projects"), (snap) => {
     projects = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     renderProjects();
     renderSales();
   });
-
   onSnapshot(collection(db, "tasks"), (snap) => {
     tasks = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     renderTasks();
   });
-
   onSnapshot(collection(db, "meetings"), (snap) => {
     meetings = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     renderMeetings();
   });
-
   onSnapshot(collection(db, "schedules"), (snap) => {
     schedules = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     renderCalendar();
@@ -1082,21 +1019,18 @@ function listenAll() {
 function handleLogin(e){
   e.preventDefault();
   const pass = document.getElementById("password-input").value;
-
   if(pass === "Serori12345"){
     document.getElementById("login-page").style.display = "none";
     document.getElementById("dashboard-page").style.display = "flex";
     lucide.createIcons();
     listenAll();
     
-    // 見積書・請求書フォームの初期明細行を作成
     if(document.getElementById('quote-items-container').children.length === 0) {
         addDocItemRow('quote-items-container');
     }
     if(document.getElementById('inv-items-container').children.length === 0) {
         addDocItemRow('inv-items-container');
     }
-
     setupLivePreviewListeners();
   } else {
     document.getElementById("login-error").classList.remove("hidden");
@@ -1121,7 +1055,6 @@ window.switchTab = function(tabId) {
         btn.classList.remove("bg-zinc-800/80", "border-zinc-700/80", "text-zinc-100");
         btn.classList.add("text-zinc-400");
     });
-
     const targetTab = document.getElementById(tabId);
     if (targetTab) targetTab.classList.remove("hidden");
 
@@ -1130,7 +1063,6 @@ window.switchTab = function(tabId) {
         activeBtn.classList.add("bg-zinc-800/80", "border-zinc-700/80", "text-zinc-100");
         activeBtn.classList.remove("text-zinc-400");
     }
-
     const sidebar = document.getElementById("sidebar");
     const backdrop = document.getElementById("sidebar-backdrop");
     if (!sidebar.classList.contains("-translate-x-full")) {
@@ -1151,9 +1083,7 @@ async function saveCustomer(e){
 }
 
 window.deleteCustomer = async function(id){
-  if(confirm("削除しますか？")){
-    await deleteDoc(doc(db,"customers",id));
-  }
+  if(confirm("削除しますか？")){ await deleteDoc(doc(db,"customers",id)); }
 };
 
 function renderCustomers(){
@@ -1183,9 +1113,7 @@ async function saveSite(e){
 }
 
 window.deleteSite = async function(id){
-  if(confirm("削除しますか？")){
-    await deleteDoc(doc(db,"sites",id));
-  }
+  if(confirm("削除しますか？")){ await deleteDoc(doc(db,"sites",id)); }
 };
 
 function renderSites(){
@@ -1196,7 +1124,7 @@ function renderSites(){
     return `
       <tr class="hover:bg-zinc-800/30 transition">
         <td data-label="サイト名" class="p-4 font-semibold text-zinc-100">${s.name}</td>
-        <td data-label="URL" class="p-4"><a href="${s.url}" target="_blank" class="text-zinc-300 hover:underline inline-flex items-center gap-1 break-all">${s.url}</a></td>
+        <td data-label="URL" class="p-4"><a href="${s.url}" target="_blank" class="text-zinc-300 hover:underline break-all">${s.url}</a></td>
         <td data-label="所有顧客" class="p-4">${cust ? cust.name : "-"}</td>
         <td data-label="操作" class="p-4 text-center">
           <button onclick="deleteSite('${s.id}')" class="text-zinc-500 hover:text-rose-400 transition text-xs">削除</button>
@@ -1223,9 +1151,7 @@ async function saveProject(e){
 }
 
 window.deleteProject = async function(id){
-  if(confirm("削除しますか？")){
-    await deleteDoc(doc(db,"projects",id));
-  }
+  if(confirm("削除しますか？")){ await deleteDoc(doc(db,"projects",id)); }
 };
 
 async function saveTask(e){
@@ -1240,9 +1166,7 @@ async function saveTask(e){
 }
 
 window.deleteTask = async function(id){
-  if(confirm("削除しますか？")){
-    await deleteDoc(doc(db,"tasks",id));
-  }
+  if(confirm("削除しますか？")){ await deleteDoc(doc(db,"tasks",id)); }
 };
 
 async function saveMeeting(e){
@@ -1257,9 +1181,7 @@ async function saveMeeting(e){
 }
 
 window.deleteMeeting = async function(id){
-  if(confirm("削除しますか？")){
-    await deleteDoc(doc(db,"meetings",id));
-  }
+  if(confirm("削除しますか？")){ await deleteDoc(doc(db,"meetings",id)); }
 };
 
 function renderMeetings(){
@@ -1281,7 +1203,6 @@ function renderMeetings(){
   }).join("") : `<tr><td class="p-4 text-zinc-500 text-center" colspan="5">議事録はありません</td></tr>`;
 }
 
-/* カレンダー＆スケジュール制御 */
 function renderCalendar() {
     const grid = document.getElementById("calendar-grid");
     const monthYearText = document.getElementById("calendar-month-year");
@@ -1289,7 +1210,6 @@ function renderCalendar() {
 
     const year = currentCalDate.getFullYear();
     const month = currentCalDate.getMonth();
-
     monthYearText.textContent = `${year} / ${String(month + 1).padStart(2, '0')}`;
     grid.innerHTML = "";
 
@@ -1301,11 +1221,9 @@ function renderCalendar() {
     }
 
     const todayStr = new Date().toISOString().split('T')[0];
-
     for (let d = 1; d <= daysInMonth; d++) {
         const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
         const dayEvents = schedules.filter(s => s.date === dateStr);
-        
         const cell = document.createElement("div");
         const isToday = dateStr === todayStr;
         cell.className = `min-h-[50px] sm:min-h-[70px] p-1 sm:p-1.5 border border-zinc-800/60 rounded-xl flex flex-col justify-between ${isToday ? 'bg-zinc-800/80 border-zinc-600' : 'bg-zinc-950/40'}`;
@@ -1349,20 +1267,16 @@ async function saveScheduleEvent(e) {
 }
 
 window.deleteSchedule = async function(id) {
-    if(confirm("この予定を削除しますか？")) {
-        await deleteDoc(doc(db, "schedules", id));
-    }
+    if(confirm("この予定を削除しますか？")) { await deleteDoc(doc(db, "schedules", id)); }
 };
 
 function renderScheduleList() {
     const list = document.getElementById("schedule-list");
     if(!list) return;
-
     if(!schedules.length) {
         list.innerHTML = `<p class="text-zinc-500 py-2">登録された予定はありません</p>`;
         return;
     }
-
     const sorted = [...schedules].sort((a,b) => new Date(a.date) - new Date(b.date));
     list.innerHTML = sorted.map(s => `
         <div class="py-2 flex items-center justify-between">
@@ -1384,11 +1298,11 @@ function renderProjects(){
       <tr class="hover:bg-zinc-800/30 transition">
         <td data-label="顧客名" class="p-4 font-semibold text-zinc-100">${cust ? cust.name : "未設定"}</td>
         <td data-label="案件名" class="p-4">${p.name}</td>
-        <td data-label="サービス" class="p-4"><span class="inline-block px-2 py-0.5 bg-zinc-800 border border-zinc-700 text-zinc-300 rounded-md text-[10px] whitespace-nowrap">${p.service || "未設定"}</span></td>
+        <td data-label="サービス" class="p-4"><span class="inline-block px-2 py-0.5 bg-zinc-800 border border-zinc-700 text-zinc-300 rounded-md text-[10px]">${p.service || "未設定"}</span></td>
         <td data-label="売上 / 原価" class="p-4 font-mono">¥${(p.amount||0).toLocaleString()} <span class="text-zinc-500 text-[10px]">(原価: ¥${(p.cost||0).toLocaleString()})</span></td>
         <td data-label="契約日" class="p-4 text-zinc-400 whitespace-nowrap">${p.date || "-"}</td>
-        <td data-label="状態" class="p-4"><span class="inline-block px-2 py-0.5 rounded-md text-[10px] whitespace-nowrap ${p.status==='完了'?'bg-zinc-100 text-zinc-950 font-bold':'bg-zinc-800 text-zinc-400'}">${p.status}</span></td>
-        <td data-label="入金" class="p-4"><span class="inline-block px-2 py-0.5 rounded-md text-[10px] whitespace-nowrap ${p.payment==='未入金'?'bg-zinc-800 text-zinc-300 border border-zinc-700':'bg-zinc-900 text-zinc-500'}">${p.payment}</span></td>
+        <td data-label="状態" class="p-4"><span class="inline-block px-2 py-0.5 rounded-md text-[10px] ${p.status==='完了'?'bg-zinc-100 text-zinc-950 font-bold':'bg-zinc-800 text-zinc-400'}">${p.status}</span></td>
+        <td data-label="入金" class="p-4"><span class="inline-block px-2 py-0.5 rounded-md text-[10px] ${p.payment==='未入金'?'bg-zinc-800 text-zinc-300 border border-zinc-700':'bg-zinc-900 text-zinc-500'}">${p.payment}</span></td>
         <td data-label="操作" class="p-4 text-center">
           <button onclick="deleteProject('${p.id}')" class="text-zinc-500 hover:text-rose-400 transition text-xs">削除</button>
         </td>
@@ -1417,37 +1331,24 @@ function updateSelectBoxes(){
   const siteSel = document.getElementById("site-customer-select");
   const projSel = document.getElementById("proj-customer-select");
   const meetSel = document.getElementById("meeting-customer-select");
-
   const opts = `<option value="">顧客を選択</option>` + customers.map(c => `<option value="${c.id}">${c.name}</option>`).join("");
   if(siteSel) siteSel.innerHTML = opts;
   if(projSel) projSel.innerHTML = opts;
   if(meetSel) meetSel.innerHTML = opts;
 }
 
-/* 経営分析・売上集計の更新 */
 function renderSales(){
-  const targetMonthly = Number(document.getElementById("monthly-target-input").value) || 3000000;
-  
+  const targetMonthly = Number(document.getElementById("monthly-target-input").value) || 300000;
   const now = new Date();
   const currentYear = now.getFullYear();
   const currentMonth = now.getMonth() + 1;
   const prevMonth = currentMonth === 1 ? 12 : currentMonth - 1;
   const prevMonthYear = currentMonth === 1 ? currentYear - 1 : currentYear;
 
-  let currentMonthSales = 0;
-  let prevMonthSales = 0;
-  let lastYearSales = 0;
-  
-  let unpaidTotal = 0;
-  let unpaidCount = 0;
-  let totalProjectAmount = 0;
-  let validProjectCount = 0;
-  
-  let totalDays = 0;
-  let daysCount = 0;
-
-  const customerMap = {};
-  const serviceMap = {};
+  let currentMonthSales = 0, prevMonthSales = 0, lastYearSales = 0;
+  let unpaidTotal = 0, unpaidCount = 0, totalProjectAmount = 0, validProjectCount = 0;
+  let totalDays = 0, daysCount = 0;
+  const customerMap = {}, serviceMap = {};
 
   projects.forEach(p => {
     const amt = p.amount || 0;
@@ -1455,34 +1356,18 @@ function renderSales(){
     const pYear = pDate.getFullYear();
     const pMonth = pDate.getMonth() + 1;
 
-    if(pYear === currentYear && pMonth === currentMonth) {
-        currentMonthSales += amt;
-    }
-    if(pYear === prevMonthYear && pMonth === prevMonth) {
-        prevMonthSales += amt;
-    }
-    if(pYear === currentYear - 1 && pMonth === currentMonth) {
-        lastYearSales += amt;
-    }
+    if(pYear === currentYear && pMonth === currentMonth) currentMonthSales += amt;
+    if(pYear === prevMonthYear && pMonth === prevMonth) prevMonthSales += amt;
+    if(pYear === currentYear - 1 && pMonth === currentMonth) lastYearSales += amt;
 
-    if(p.payment === "未入金") {
-        unpaidTotal += amt;
-        unpaidCount++;
-    }
-
-    if(p.status !== "失注") {
-        totalProjectAmount += amt;
-        validProjectCount++;
-    }
+    if(p.payment === "未入金") { unpaidTotal += amt; unpaidCount++; }
+    if(p.status !== "失注") { totalProjectAmount += amt; validProjectCount++; }
 
     if(p.date && p.endDate) {
         const start = new Date(p.date);
         const end = new Date(p.endDate);
         const diffDays = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
-        if(diffDays >= 0) {
-            totalDays += diffDays;
-            daysCount++;
-        }
+        if(diffDays >= 0) { totalDays += diffDays; daysCount++; }
     }
 
     const cust = customers.find(c => c.id === p.customerId);
@@ -1522,8 +1407,7 @@ function renderSales(){
   document.getElementById("sales-avg-days").textContent = `${avgDays} 日`;
 
   const sortedCustomers = Object.entries(customerMap).sort((a,b) => b[1] - a[1]).slice(0, 5);
-  const custRankingEl = document.getElementById("customer-ranking-list");
-  custRankingEl.innerHTML = sortedCustomers.length ? sortedCustomers.map(([name, amt], idx) => `
+  document.getElementById("customer-ranking-list").innerHTML = sortedCustomers.length ? sortedCustomers.map(([name, amt], idx) => `
       <div class="flex items-center justify-between p-2.5 bg-zinc-950/60 rounded-xl border border-zinc-800/80">
           <div class="flex items-center gap-2">
               <span class="w-5 h-5 flex items-center justify-center text-[10px] font-bold ${idx===0?'bg-zinc-100 text-zinc-950':'bg-zinc-800 text-zinc-400'} rounded-full">${idx+1}</span>
@@ -1534,8 +1418,7 @@ function renderSales(){
   `).join('') : `<p class="text-zinc-500">データがありません</p>`;
 
   const sortedServices = Object.entries(serviceMap).sort((a,b) => b[1] - a[1]);
-  const serviceEl = document.getElementById("service-breakdown-list");
-  serviceEl.innerHTML = sortedServices.length ? sortedServices.map(([srv, amt]) => `
+  document.getElementById("service-breakdown-list").innerHTML = sortedServices.length ? sortedServices.map(([srv, amt]) => `
       <div class="flex items-center justify-between p-2.5 bg-zinc-950/60 rounded-xl border border-zinc-800/80">
           <span class="text-zinc-300">${srv}</span>
           <span class="font-mono text-zinc-100">¥${amt.toLocaleString()}</span>
@@ -1543,11 +1426,9 @@ function renderSales(){
   `).join('') : `<p class="text-zinc-500">データがありません</p>`;
 }
 
-/* ローカルファイルプレビュー＆管理 */
 function handleFileUpload(e) {
     const files = e.target.files;
     if(!files || !files.length) return;
-
     for(let file of files) {
         const reader = new FileReader();
         reader.onload = function(event) {
@@ -1573,51 +1454,49 @@ window.deleteFile = function(id) {
 function renderFileList() {
     const tbody = document.getElementById("file-list-tbody");
     if(!tbody) return;
-
     tbody.innerHTML = localFiles.length ? localFiles.map(f => `
         <tr class="hover:bg-zinc-800/30 transition">
             <td data-label="ファイル名" class="p-4 font-semibold text-zinc-100">${f.name}</td>
             <td data-label="サイズ" class="p-4 text-zinc-400">${f.size}</td>
             <td data-label="追加日時" class="p-4 text-zinc-400">${f.date}</td>
             <td data-label="操作" class="p-4 text-center space-x-2">
-                <a href="${f.url}" target="_blank" class="text-zinc-300 hover:underline">開く/表示</a>
+                <a href="${f.url}" target="_blank" class="text-zinc-300 hover:underline">表示</a>
                 <button onclick="deleteFile('${f.id}')" class="text-zinc-500 hover:text-rose-400">削除</button>
             </td>
         </tr>
     `).join('') : `<tr><td class="p-4 text-zinc-500 text-center" colspan="4">ファイルはありません</td></tr>`;
 }
 
-/* 書類明細行の動的追加・削除制御 */
 window.addDocItemRow = function(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
-
     const rowId = 'item-row-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4);
     const row = document.createElement('div');
     row.id = rowId;
     row.className = 'grid grid-cols-12 gap-2 items-center bg-zinc-950 p-2.5 rounded-xl border border-zinc-800/80';
     row.innerHTML = `
         <div class="col-span-12 sm:col-span-5">
-            <input type="text" class="item-name w-full px-3 py-2 bg-zinc-900 border border-zinc-800 text-xs rounded-lg text-zinc-100 focus:outline-none focus:border-zinc-500" placeholder="品名・項目（例: Webデザイン構築）" required>
+            <input type="text" class="item-name w-full px-3 py-2 bg-zinc-900 border border-zinc-800 text-xs rounded-lg text-zinc-100 focus:outline-none focus:border-zinc-500" placeholder="品名・項目" required>
         </div>
         <div class="col-span-5 sm:col-span-3">
-            <input type="number" class="item-price w-full px-3 py-2 bg-zinc-900 border border-zinc-800 text-xs rounded-lg text-zinc-100 focus:outline-none focus:border-zinc-500" placeholder="単価(税抜)" required>
+            <input type="number" class="item-price w-full px-3 py-2 bg-zinc-900 border border-zinc-800 text-xs rounded-lg text-zinc-100 focus:outline-none focus:border-zinc-500" placeholder="単価" required>
         </div>
         <div class="col-span-5 sm:col-span-3">
             <input type="number" class="item-qty w-full px-3 py-2 bg-zinc-900 border border-zinc-800 text-xs rounded-lg text-zinc-100 focus:outline-none focus:border-zinc-500" placeholder="数量" value="1" min="1" required>
         </div>
         <div class="col-span-2 sm:col-span-1 text-right">
-            <button type="button" onclick="removeDocItemRow('${rowId}')" class="p-1.5 text-zinc-500 hover:text-rose-400 transition">
+            <button type="button" onclick="removeDocItemRow('${rowId}', '${containerId}')" class="p-1.5 text-zinc-500 hover:text-rose-400 transition">
                 <i data-lucide="trash-2" class="w-4 h-4"></i>
             </button>
         </div>
     `;
     container.appendChild(row);
     lucide.createIcons();
+    attachRowListeners(row);
     updateLivePreviews();
 };
 
-window.removeDocItemRow = function(rowId) {
+window.removeDocItemRow = function(rowId, containerId) {
     const el = document.getElementById(rowId);
     if(el) {
         el.remove();
@@ -1625,25 +1504,42 @@ window.removeDocItemRow = function(rowId) {
     }
 };
 
-/* リアルタイムプレビュー＆PDF生成ロジック */
+function attachRowListeners(row) {
+    const inputs = row.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.addEventListener('input', updateLivePreviews);
+    });
+}
+
+function setupLivePreviewListeners() {
+    ['quote-title', 'quote-client', 'quote-date', 'quote-notes', 'quote-expiry', 'quote-pic',
+     'inv-title', 'inv-client', 'inv-date', 'inv-due-date', 'inv-number', 'inv-notes',
+     'con-party-a', 'con-party-b', 'con-date', 'con-period', 'con-title', 'con-scope', 'con-amount', 'con-payment-terms'].forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.addEventListener('input', updateLivePreviews);
+    });
+
+    document.querySelectorAll('#quote-items-container > div, #inv-items-container > div').forEach(row => {
+        attachRowListeners(row);
+    });
+    updateLivePreviews();
+}
+
 function updateLivePreviews() {
-    // 見積書プレビュー
+    // 見積書プレビュー更新
     const qTitle = document.getElementById('quote-title').value || "件名未設定";
     const qClient = document.getElementById('quote-client').value || "◯◯ 御中";
     const qDate = document.getElementById('quote-date').value || "----/--/--";
-    const qNotes = document.getElementById('quote-notes').value || "特記事項なし";
+    const qNotes = document.getElementById('quote-notes').value || "";
 
     let qItemsHtml = '';
     let qSubtotal = 0;
-
-    const qRows = document.querySelectorAll('#quote-items-container > div');
-    qRows.forEach(r => {
-        const name = r.querySelector('.item-name').value || "項目未設定";
+    document.querySelectorAll('#quote-items-container > div').forEach(r => {
+        const name = r.querySelector('.item-name').value || "項目";
         const price = Number(r.querySelector('.item-price').value) || 0;
         const qty = Number(r.querySelector('.item-qty').value) || 1;
         const total = price * qty;
         qSubtotal += total;
-
         qItemsHtml += `
             <tr style="border-bottom: 1px solid #eee;">
                 <td style="padding: 6px 8px; border: 1px solid #eee;">${name}</td>
@@ -1653,72 +1549,60 @@ function updateLivePreviews() {
             </tr>
         `;
     });
-
     const qTax = Math.floor(qSubtotal * 0.1);
     const qGrandTotal = qSubtotal + qTax;
 
-    const qPreviewEl = document.getElementById('quote-live-preview');
-    if(qPreviewEl) {
-        qPreviewEl.innerHTML = `
-            <div style="width: 595pt; min-height: 842pt; padding: 40pt; background: white; color: black; line-height: 1.6; font-size: 11px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); text-align: left;">
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <h1 style="font-size: 20px; font-weight: 700; letter-spacing: 6px; border-bottom: 2px solid #000; padding-bottom: 6px; display: inline-block; width: 100%;">見積書</h1>
-                </div>
+    const qPrev = document.getElementById('quote-live-preview');
+    if(qPrev) {
+        qPrev.innerHTML = `
+            <div style="width: 595pt; min-height: 842pt; padding: 40pt; background: white; color: black; line-height: 1.6; font-size: 11px; text-align: left;">
+                <h1 style="font-size: 20px; font-weight: 700; text-align: center; border-bottom: 2px solid #000; padding-bottom: 6px; margin-bottom: 20px;">見積書</h1>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                    <div style="width: 55%;">
+                    <div>
                         <p style="font-size: 15px; font-weight: bold; border-bottom: 1px solid #000; padding-bottom: 4px; margin-bottom: 6px;">${qClient}</p>
-                        <p style="font-size: 11px; font-weight: bold; color: #111; margin-bottom: 4px;">件名: ${qTitle}</p>
-                        <p style="font-size: 10px; color: #333;">下記の通りお見積り申し上げます。</p>
+                        <p style="font-size: 11px; font-weight: bold;">件名: ${qTitle}</p>
                     </div>
-                    <div style="text-align: right; width: 40%;">
-                        <p style="font-weight: bold; font-size: 13px; margin-bottom: 2px;">NEXORA GROUP</p>
-                        <p style="font-size: 9px; color: #333; margin: 0;">〒514-0003 三重県津市桜橋1-127-3</p>
-                        <p style="font-size: 9px; color: #333; margin: 0;">wgroup.nexora@gmail.com</p>
-                        <p style="font-size: 10px; font-weight: bold; color: #000; margin-top: 6px;">発行日：${qDate}</p>
+                    <div style="text-align: right;">
+                        <p style="font-weight: bold; font-size: 13px;">NEXORA GROUP</p>
+                        <p style="font-size: 9px; color: #333;">発行日：${qDate}</p>
                     </div>
                 </div>
-                <div style="background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #000; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 11px; font-weight: bold;">見積合計金額（税込）</span>
+                <div style="background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #000; margin-bottom: 15px; display: flex; justify-content: space-between;">
+                    <span style="font-weight: bold;">見積合計金額（税込）</span>
                     <span style="font-size: 18px; font-weight: bold;">¥${qGrandTotal.toLocaleString()}-</span>
                 </div>
                 <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
                     <thead>
                         <tr style="background: #18181b; color: white;">
-                            <th style="padding: 6px 8px; text-align: left; border: 1px solid #18181b; font-size: 10px;">品名 / 項目</th>
-                            <th style="padding: 6px 8px; text-align: right; border: 1px solid #18181b; width: 80px; font-size: 10px;">単価 (税抜)</th>
-                            <th style="padding: 6px 8px; text-align: right; border: 1px solid #18181b; width: 50px; font-size: 10px;">数量</th>
-                            <th style="padding: 6px 8px; text-align: right; border: 1px solid #18181b; width: 90px; font-size: 10px;">金額 (税抜)</th>
+                            <th style="padding: 6px; text-align: left;">品名</th>
+                            <th style="padding: 6px; text-align: right; width: 80px;">単価</th>
+                            <th style="padding: 6px; text-align: right; width: 50px;">数量</th>
+                            <th style="padding: 6px; text-align: right; width: 90px;">金額</th>
                         </tr>
                     </thead>
                     <tbody>${qItemsHtml}</tbody>
                 </table>
-                <div style="font-size: 9px; color: #444; border-top: 1px solid #eee; padding-top: 10px;">
-                    <p style="font-weight: bold; margin-bottom: 2px;">【備考】</p>
-                    <p style="margin: 0; white-space: pre-wrap;">${qNotes}</p>
-                </div>
+                <p style="font-size: 9px; white-space: pre-wrap;">${qNotes}</p>
             </div>
         `;
     }
 
-    // 請求書プレビュー
-    const iTitle = document.getElementById('inv-title').value || "件名未設定";
-    const iClient = document.getElementById('inv-client').value || "◯◯ 御中";
-    const iDate = document.getElementById('inv-date').value || "----/--/--";
-    const iDueDate = document.getElementById('inv-due-date').value || "----/--/--";
-    const iNotes = document.getElementById('inv-notes').value || "特記事項なし";
+    // 請求書プレビュー更新
+    const invTitle = document.getElementById('inv-title').value || "件名未設定";
+    const invClient = document.getElementById('inv-client').value || "◯◯ 御中";
+    const invDate = document.getElementById('inv-date').value || "----/--/--";
+    const invDueDate = document.getElementById('inv-due-date').value || "----/--/--";
+    const invNotes = document.getElementById('inv-notes').value || "";
 
-    let iItemsHtml = '';
-    let iSubtotal = 0;
-
-    const iRows = document.querySelectorAll('#inv-items-container > div');
-    iRows.forEach(r => {
-        const name = r.querySelector('.item-name').value || "項目未設定";
+    let invItemsHtml = '';
+    let invSubtotal = 0;
+    document.querySelectorAll('#inv-items-container > div').forEach(r => {
+        const name = r.querySelector('.item-name').value || "項目";
         const price = Number(r.querySelector('.item-price').value) || 0;
         const qty = Number(r.querySelector('.item-qty').value) || 1;
         const total = price * qty;
-        iSubtotal += total;
-
-        iItemsHtml += `
+        invSubtotal += total;
+        invItemsHtml += `
             <tr style="border-bottom: 1px solid #eee;">
                 <td style="padding: 6px 8px; border: 1px solid #eee;">${name}</td>
                 <td style="padding: 6px 8px; text-align: right; border: 1px solid #eee;">¥${price.toLocaleString()}</td>
@@ -1727,161 +1611,132 @@ function updateLivePreviews() {
             </tr>
         `;
     });
+    const invTax = Math.floor(invSubtotal * 0.1);
+    const invGrandTotal = invSubtotal + invTax;
 
-    const iTax = Math.floor(iSubtotal * 0.1);
-    const iGrandTotal = iSubtotal + iTax;
-
-    const iPreviewEl = document.getElementById('inv-live-preview');
-    if(iPreviewEl) {
-        iPreviewEl.innerHTML = `
-            <div style="width: 595pt; min-height: 842pt; padding: 40pt; background: white; color: black; line-height: 1.6; font-size: 11px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); text-align: left;">
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <h1 style="font-size: 20px; font-weight: 700; letter-spacing: 6px; border-bottom: 2px solid #000; padding-bottom: 6px; display: inline-block; width: 100%;">請求書</h1>
-                </div>
+    const invPrev = document.getElementById('inv-live-preview');
+    if(invPrev) {
+        invPrev.innerHTML = `
+            <div style="width: 595pt; min-height: 842pt; padding: 40pt; background: white; color: black; line-height: 1.6; font-size: 11px; text-align: left;">
+                <h1 style="font-size: 20px; font-weight: 700; text-align: center; border-bottom: 2px solid #000; padding-bottom: 6px; margin-bottom: 20px;">請求書</h1>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                    <div style="width: 55%;">
-                        <p style="font-size: 15px; font-weight: bold; border-bottom: 1px solid #000; padding-bottom: 4px; margin-bottom: 6px;">${iClient}</p>
-                        <p style="font-size: 11px; font-weight: bold; color: #111; margin-bottom: 4px;">件名: ${iTitle}</p>
-                        <p style="font-size: 10px; color: #333;">下記の通りご請求申し上げます。</p>
+                    <div>
+                        <p style="font-size: 15px; font-weight: bold; border-bottom: 1px solid #000; padding-bottom: 4px; margin-bottom: 6px;">${invClient}</p>
+                        <p style="font-size: 11px; font-weight: bold;">件名: ${invTitle}</p>
+                        <p style="font-size: 10px;">支払期限: ${invDueDate}</p>
                     </div>
-                    <div style="text-align: right; width: 40%;">
-                        <p style="font-weight: bold; font-size: 13px; margin-bottom: 2px;">NEXORA GROUP</p>
-                        <p style="font-size: 9px; color: #333; margin: 0;">〒514-0003 三重県津市桜橋1-127-3</p>
-                        <p style="font-size: 9px; color: #333; margin: 0;">wgroup.nexora@gmail.com</p>
-                        <p style="font-size: 10px; font-weight: bold; color: #000; margin-top: 6px;">請求日：${iDate}</p>
-                        <p style="font-size: 9px; color: #444;">お支払期限：${iDueDate}</p>
+                    <div style="text-align: right;">
+                        <p style="font-weight: bold; font-size: 13px;">NEXORA GROUP</p>
+                        <p style="font-size: 9px; color: #333;">請求日：${invDate}</p>
                     </div>
                 </div>
-                <div style="background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #000; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 11px; font-weight: bold;">請求合計金額（税込）</span>
-                    <span style="font-size: 18px; font-weight: bold;">¥${iGrandTotal.toLocaleString()}-</span>
+                <div style="background: #f8f9fa; padding: 10px 15px; border-left: 4px solid #000; margin-bottom: 15px; display: flex; justify-content: space-between;">
+                    <span style="font-weight: bold;">ご請求金額（税込）</span>
+                    <span style="font-size: 18px; font-weight: bold;">¥${invGrandTotal.toLocaleString()}-</span>
                 </div>
                 <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
                     <thead>
                         <tr style="background: #18181b; color: white;">
-                            <th style="padding: 6px 8px; text-align: left; border: 1px solid #18181b; font-size: 10px;">品名 / 項目</th>
-                            <th style="padding: 6px 8px; text-align: right; border: 1px solid #18181b; width: 80px; font-size: 10px;">単価 (税抜)</th>
-                            <th style="padding: 6px 8px; text-align: right; border: 1px solid #18181b; width: 50px; font-size: 10px;">数量</th>
-                            <th style="padding: 6px 8px; text-align: right; border: 1px solid #18181b; width: 90px; font-size: 10px;">金額 (税抜)</th>
+                            <th style="padding: 6px; text-align: left;">品名</th>
+                            <th style="padding: 6px; text-align: right; width: 80px;">単価</th>
+                            <th style="padding: 6px; text-align: right; width: 50px;">数量</th>
+                            <th style="padding: 6px; text-align: right; width: 90px;">金額</th>
                         </tr>
                     </thead>
-                    <tbody>${iItemsHtml}</tbody>
+                    <tbody>${invItemsHtml}</tbody>
                 </table>
-                <div style="font-size: 9px; color: #444; border-top: 1px solid #eee; padding-top: 10px;">
-                    <p style="font-weight: bold; margin-bottom: 2px;">【振込先・特記事項】</p>
-                    <p style="margin: 0; white-space: pre-wrap;">${iNotes}</p>
+                <p style="font-size: 9px; white-space: pre-wrap;">${invNotes}</p>
+            </div>
+        `;
+    }
+}
+// 契約書プレビュー更新
+    const conPartyA = document.getElementById('con-party-a').value || "株式会社〇〇";
+    const conPartyB = document.getElementById('con-party-b').value || "NEXORA GROUP";
+    const conDate = document.getElementById('con-date').value || "2026年--月--日";
+    const conPeriod = document.getElementById('con-period').value || "締結日から2026年12月31日まで";
+    const conTitle = document.getElementById('con-title').value || "業務委託案件";
+    const conScope = document.getElementById('con-scope').value || "仕様に基づくシステム開発および関連業務";
+    const conAmount = Number(document.getElementById('con-amount').value) || 0;
+    const conTax = Math.floor(conAmount * 0.1);
+    const conGrandTotal = conAmount + conTax;
+    const conPaymentTerms = document.getElementById('con-payment-terms').value || "納品完了時に請求書発行、翌月末払い";
+
+    const conPrev = document.getElementById('con-live-preview');
+    if(conPrev) {
+        conPrev.innerHTML = `
+            <div style="width: 595pt; min-height: 842pt; padding: 40pt; background: white; color: black; line-height: 1.7; font-size: 10.5px; text-align: left;">
+                <h1 style="font-size: 18px; font-weight: bold; text-align: center; letter-spacing: 0.2em; margin-bottom: 25px;">業務委託契約書</h1>
+                
+                <p style="margin-bottom: 15px; font-size: 10px;">
+                    発注者である <strong>${conPartyA}</strong>（以下「甲」という。）と、受注者である <strong>${conPartyB}</strong>（以下「乙」という。）とは、以下の通り業務委託契約（以下「本契約」という。）を締結する。
+                </p>
+
+                <div style="margin-bottom: 12px;">
+                    <p style="font-weight: bold; border-bottom: 1px solid #333; padding-bottom: 2px; margin-bottom: 4px;">第1条（目的および委託業務）</p>
+                    <p style="padding-left: 10px;">甲は、乙に対し、以下の業務（以下「本件業務」という。）を委託し、乙はこれを受託する。</p>
+                    <p style="padding-left: 20px; margin-top: 4px;"><strong>件名：</strong> ${conTitle}</p>
+                    <p style="padding-left: 20px;"><strong>内容：</strong> ${conScope}</p>
+                </div>
+
+                <div style="margin-bottom: 12px;">
+                    <p style="font-weight: bold; border-bottom: 1px solid #333; padding-bottom: 2px; margin-bottom: 4px;">第2条（契約期間）</p>
+                    <p style="padding-left: 10px;">本契約の有効期間は、${conDate} から ${conPeriod} までとする。</p>
+                </div>
+
+                <div style="margin-bottom: 12px;">
+                    <p style="font-weight: bold; border-bottom: 1px solid #333; padding-bottom: 2px; margin-bottom: 4px;">第3条（委託料および支払方法）</p>
+                    <p style="padding-left: 10px;">1. 本件業務の委託料は、金 ¥${conAmount.toLocaleString()}-（税抜）とする。消費税額等（¥${conTax.toLocaleString()}-）を加算した総額 ¥${conGrandTotal.toLocaleString()}-（税込）とする。</p>
+                    <p style="padding-left: 10px;">2. 支払条件：${conPaymentTerms}</p>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <p style="font-weight: bold; border-bottom: 1px solid #333; padding-bottom: 2px; margin-bottom: 4px;">第4条（協議事項）</p>
+                    <p style="padding-left: 10px;">本契約に定めのない事項および本契約の解釈に疑義が生じたときは、甲乙誠意をもって協議の上、これを解決するものとする。</p>
+                </div>
+
+                <p style="text-align: right; margin-bottom: 25px; font-size: 10px;">契約締結日：${conDate}</p>
+
+                <div style="display: flex; justify-content: space-between; margin-top: 30px; font-size: 10px;">
+                    <div style="width: 45%; border-top: 1px solid #000; padding-top: 8px;">
+                        <p><strong>【甲】</strong></p>
+                        <p>${conPartyA}</p>
+                        <p style="margin-top: 20px;">代表者印：</p>
+                    </div>
+                    <div style="width: 45%; border-top: 1px solid #000; padding-top: 8px;">
+                        <p><strong>【乙】</strong></p>
+                        <p>${conPartyB}</p>
+                        <p style="margin-top: 20px;">代表者印：</p>
+                    </div>
                 </div>
             </div>
         `;
     }
 
-    // 契約書プレビュー
-    const cPartyA = document.getElementById('con-party-a').value || "発注者（甲）";
-    const cPartyB = document.getElementById('con-party-b').value || "NEXORA GROUP";
-    const cDate = document.getElementById('con-date').value || "----/--/--";
-    const cTitle = document.getElementById('con-title').value || "委託業務件名未設定";
-    const cAmount = Number(document.getElementById('con-amount').value) || 0;
-    const cScope = document.getElementById('con-scope').value || "特記なし";
-    const cTerms = document.getElementById('con-terms').value || "特記事項なし";
-
-    const cPreviewEl = document.getElementById('con-live-preview');
-    if(cPreviewEl) {
-        cPreviewEl.innerHTML = `
-            <div style="width: 595pt; min-height: 842pt; padding: 40pt; background: white; color: black; line-height: 1.6; font-size: 11px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); text-align: left;">
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <h1 style="font-size: 18px; font-weight: 700; letter-spacing: 4px; border-bottom: 2px solid #000; padding-bottom: 6px; display: inline-block; width: 100%;">業務委託契約書</h1>
-                </div>
-                <p style="margin-bottom: 12px; font-size: 10px;">${cPartyA}（以下「甲」という）と、${cPartyB}（以下「乙」という）は、以下の通り業務委託契約を締結する。</p>
-                <div style="border: 1px solid #18181b; padding: 12px; margin-bottom: 15px; background: #fcfcfc;">
-                    <p style="font-weight: bold; margin-bottom: 4px;">第1条（目的・業務内容）</p>
-                    <p style="margin-0; color: #333; font-size: 10px;">甲は乙に対し、以下の業務（以下「本業務」という）を委託し、乙はこれを受託する。</p>
-                    <p style="margin-top: 4px; font-weight: bold; font-size: 10px;">【業務名】 ${cTitle}</p>
-                    <p style="margin-top: 2px; color: #444; font-size: 9px; white-space: pre-wrap;">【詳細】 ${cScope}</p>
-                </div>
-                <div style="border: 1px solid #18181b; padding: 12px; margin-bottom: 15px; background: #fcfcfc;">
-                    <p style="font-weight: bold; margin-bottom: 4px;">第2条（委託報酬および支払方法）</p>
-                    <p style="margin: 0; font-size: 11px; font-weight: bold;">委託料： 金 ¥${cAmount.toLocaleString()} -（消費税別）</p>
-                </div>
-                <div style="border: 1px solid #18181b; padding: 12px; margin-bottom: 15px; background: #fcfcfc;">
-                    <p style="font-weight: bold; margin-bottom: 4px;">第3条（特記事項・合意条項）</p>
-                    <p style="margin: 0; font-size: 9px; color: #333; white-space: pre-wrap;">${cTerms}</p>
-                </div>
-                <p style="margin-top: 20px; font-size: 10px;">本契約締結の証として、締結日（${cDate}）をもって両者合意の上発効する。</p>
-                <div style="margin-top: 30px; display: flex; justify-content: space-between;">
-                    <div style="width: 45%; border-top: 1px solid #000; padding-top: 6px;">
-                        <p style="font-weight: bold; margin: 0;">（甲）${cPartyA}</p>
-                    </div>
-                    <div style="width: 45%; border-top: 1px solid #000; padding-top: 6px;">
-                        <p style="font-weight: bold; margin: 0;">（乙）${cPartyB}</p>
-                    </div>
-                </div>
-            </div>
-        `;
+function generatePDF(type) {
+    let targetEl = null;
+    let fileName = "document.pdf";
+    if(type === 'quote') {
+        targetEl = document.getElementById('quote-live-preview').firstElementChild;
+        fileName = "estimate.pdf";
+    } else if(type === 'invoice') {
+        targetEl = document.getElementById('inv-live-preview').firstElementChild;
+        fileName = "invoice.pdf";
+    } else if(type === 'contract') {
+        targetEl = document.getElementById('con-live-preview').firstElementChild;
+        fileName = "contract.pdf";
     }
+    if(!targetEl) return;
+
+    const opt = {
+        margin:       0,
+        filename:     fileName,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true },
+        jsPDF:        { unit: 'pt', format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().from(targetEl).set(opt).save();
 }
-
-function setupLivePreviewListeners() {
-    const inputs = document.querySelectorAll('input, textarea, select');
-    inputs.forEach(input => {
-        input.addEventListener('input', updateLivePreviews);
-        input.addEventListener('change', updateLivePreviews);
-    });
-    updateLivePreviews();
-}
-
-/* イベントリスナー初期化 */
-document.getElementById("login-form").addEventListener("submit", handleLogin);
-document.getElementById("logout-btn").addEventListener("click", handleLogout);
-
-document.getElementById("mobile-menu-toggle").addEventListener("click", toggleMobileSidebar);
-document.getElementById("mobile-menu-close").addEventListener("click", toggleMobileSidebar);
-document.getElementById("sidebar-backdrop").addEventListener("click", toggleMobileSidebar);
-
-document.getElementById("customer-form").addEventListener("submit", saveCustomer);
-document.getElementById("site-form").addEventListener("submit", saveSite);
-document.getElementById("project-form").addEventListener("submit", saveProject);
-document.getElementById("task-form").addEventListener("submit", saveTask);
-document.getElementById("meeting-form").addEventListener("submit", saveMeeting);
-
-document.getElementById("schedule-form").addEventListener("submit", saveScheduleEvent);
-document.getElementById("cal-prev-btn").addEventListener("click", () => changeCalendarMonth(-1));
-document.getElementById("cal-next-btn").addEventListener("click", () => changeCalendarMonth(1));
-document.getElementById("calendar-month-picker").addEventListener("change", (e) => jumpToMonth(e.target.value));
-
-document.getElementById("monthly-target-input").addEventListener("input", renderSales);
-
-const dropArea = document.getElementById("file-drop-area");
-const fileInput = document.getElementById("file-upload-input");
-
-dropArea.addEventListener("click", () => fileInput.click());
-fileInput.addEventListener("change", handleFileUpload);
-
-document.getElementById("quote-add-item-btn").addEventListener("click", () => addDocItemRow("quote-items-container"));
-document.getElementById("inv-add-item-btn").addEventListener("click", () => addDocItemRow("inv-items-container"));
-
-document.getElementById("quote-form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const el = document.getElementById("quote-live-preview").firstElementChild;
-    if(el) {
-        html2pdf().set({ margin: 0, filename: '見積書.pdf', html2canvas: { scale: 2 }, jsPDF: { unit: 'pt', format: 'a4', orientation: 'portrait' } }).from(el).save();
-    }
-});
-
-document.getElementById("inv-form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const el = document.getElementById("inv-live-preview").firstElementChild;
-    if(el) {
-        html2pdf().set({ margin: 0, filename: '請求書.pdf', html2canvas: { scale: 2 }, jsPDF: { unit: 'pt', format: 'a4', orientation: 'portrait' } }).from(el).save();
-    }
-});
-
-document.getElementById("contract-form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const el = document.getElementById("con-live-preview").firstElementChild;
-    if(el) {
-        html2pdf().set({ margin: 0, filename: '業務委託契約書.pdf', html2canvas: { scale: 2 }, jsPDF: { unit: 'pt', format: 'a4', orientation: 'portrait' } }).from(el).save();
-    }
-});
 </script>
 </body>
 </html>
